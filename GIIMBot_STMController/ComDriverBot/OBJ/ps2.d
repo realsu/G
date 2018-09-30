@@ -1,0 +1,14 @@
+..\obj\ps2.o: ..\HARDWARE\PS2\ps2.c
+..\obj\ps2.o: ..\HARDWARE\PS2\ps2.h
+..\obj\ps2.o: ..\USER\stm32f10x.h
+..\obj\ps2.o: ..\CORE\core_cm3.h
+..\obj\ps2.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\ps2.o: ..\USER\system_stm32f10x.h
+..\obj\ps2.o: ..\USER\stm32f10x_conf.h
+..\obj\ps2.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\ps2.o: ..\USER\stm32f10x.h
+..\obj\ps2.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\ps2.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\ps2.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\ps2.o: ..\SYSTEM\sys\sys.h
+..\obj\ps2.o: ..\SYSTEM\delay\delay.h
