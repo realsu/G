@@ -1,0 +1,13 @@
+..\obj\mp3_lib.o: ..\HARDWARE\MP3\mp3_lib.c
+..\obj\mp3_lib.o: ..\USER\stm32f10x.h
+..\obj\mp3_lib.o: ..\CORE\core_cm3.h
+..\obj\mp3_lib.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\obj\mp3_lib.o: ..\USER\system_stm32f10x.h
+..\obj\mp3_lib.o: ..\USER\stm32f10x_conf.h
+..\obj\mp3_lib.o: ..\STM32F10x_FWLib\inc\stm32f10x_gpio.h
+..\obj\mp3_lib.o: ..\USER\stm32f10x.h
+..\obj\mp3_lib.o: ..\STM32F10x_FWLib\inc\stm32f10x_rcc.h
+..\obj\mp3_lib.o: ..\STM32F10x_FWLib\inc\stm32f10x_usart.h
+..\obj\mp3_lib.o: ..\STM32F10x_FWLib\inc\misc.h
+..\obj\mp3_lib.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h
+..\obj\mp3_lib.o: ..\HARDWARE\MP3\mp3_lib.h

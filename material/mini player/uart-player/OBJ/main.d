@@ -14,4 +14,3 @@
 ..\obj\main.o: ..\SYSTEM\delay\delay.h
 ..\obj\main.o: ..\SYSTEM\usart\usart.h
 ..\obj\main.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
-..\obj\main.o: ..\HARDWARE\MP3\PlayerMini.h

@@ -67,13 +67,9 @@
 #define Stack_CheckSum 7
 #define Stack_End 9
 
-class DFRobotDFPlayerMini {
-  Stream* _serial;
-  
-  unsigned long _timeOutTimer;
-  unsigned long _timeOutDuration = 500;
-  
-  uint8_t _received[DFPLAYER_RECEIVED_LENGTH];
+unsigned long _timeOutTimer;
+unsigned long _timeOutDuration = 500;
+ uint8_t _received[DFPLAYER_RECEIVED_LENGTH];
   uint8_t _sending[DFPLAYER_SEND_LENGTH] = {0x7E, 0xFF, 06, 00, 01, 00, 00, 00, 00, 0xEF};
   
   uint8_t _receivedIndex=0;
@@ -99,7 +95,7 @@ class DFRobotDFPlayerMini {
   
   uint8_t device = DFPLAYER_DEVICE_SD;
   
-  public:
+  //public:
   
   uint8_t _handleType;
   uint8_t _handleCommand;
@@ -112,7 +108,7 @@ class DFRobotDFPlayerMini {
 
   uint8_t readCommand();
   
-  bool begin(Stream& stream, bool isACK = true, bool doReset = true);
+ // bool begin(Stream& stream, bool isACK = true, bool doReset = true);
   
   bool waitAvailable(unsigned long duration = 0);
   
@@ -196,8 +192,12 @@ class DFRobotDFPlayerMini {
 
   int readFolderCounts();
   
-  int readCurrentFileNumber();
-  
-};
+  int readCurrentFileNumber();	
+	
+//class DFRobotDFPlayerMini {
+//  Stream* _serial;  
+//};
+
+
 
 #endif

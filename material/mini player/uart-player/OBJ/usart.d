@@ -12,3 +12,4 @@
 ..\obj\usart.o: ..\STM32F10x_FWLib\inc\misc.h
 ..\obj\usart.o: ..\SYSTEM\usart\usart.h
 ..\obj\usart.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+..\obj\usart.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h

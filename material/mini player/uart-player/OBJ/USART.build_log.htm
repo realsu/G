@@ -9,167 +9,48 @@ Project File Date:  09/30/2018
 <h2>Output:</h2>
 Build target 'Target 1'
 compiling main.c...
-..\HARDWARE\MP3\PlayerMini.h(70): error:  #20: identifier "class" is undefined
-  class DFRobotDFPlayerMini {
-..\HARDWARE\MP3\PlayerMini.h(70): error:  #65: expected a ";"
-  class DFRobotDFPlayerMini {
-..\HARDWARE\MP3\PlayerMini.h(91): warning:  #12-D: parsing restarts here after previous syntax error
-    uint16_t arrayToUint16(uint8_t *array);
-..\HARDWARE\MP3\PlayerMini.h(97): warning:  #1295-D: Deprecated declaration parseStack - give arg types
-    void parseStack();
-..\HARDWARE\MP3\PlayerMini.h(98): error:  #20: identifier "bool" is undefined
-    bool validateStack();
-..\HARDWARE\MP3\PlayerMini.h(98): warning:  #1295-D: Deprecated declaration validateStack - give arg types
-    bool validateStack();
-..\HARDWARE\MP3\PlayerMini.h(102): error:  #77-D: this declaration has no storage class or type specifier
-    public:
-..\HARDWARE\MP3\PlayerMini.h(102): error:  #65: expected a ";"
-    public:
-..\HARDWARE\MP3\PlayerMini.h(107): error:  #20: identifier "bool" is undefined
-    bool _isAvailable = false;
-..\HARDWARE\MP3\PlayerMini.h(107): error:  #20: identifier "false" is undefined
-    bool _isAvailable = false;
-..\HARDWARE\MP3\PlayerMini.h(108): error:  #20: identifier "bool" is undefined
-    bool _isSending = false;
-..\HARDWARE\MP3\PlayerMini.h(110): error:  #20: identifier "bool" is undefined
-    bool handleMessage(uint8_t type, uint16_t parameter = 0);
-..\HARDWARE\MP3\PlayerMini.h(110): error:  #18: expected a ")"
-    bool handleMessage(uint8_t type, uint16_t parameter = 0);
-..\HARDWARE\MP3\PlayerMini.h(111): error:  #20: identifier "bool" is undefined
-    bool handleError(uint8_t type, uint16_t parameter = 0);
-..\HARDWARE\MP3\PlayerMini.h(111): error:  #18: expected a ")"
-    bool handleError(uint8_t type, uint16_t parameter = 0);
-..\HARDWARE\MP3\PlayerMini.h(113): warning:  #1295-D: Deprecated declaration readCommand - give arg types
-    uint8_t readCommand();
-..\HARDWARE\MP3\PlayerMini.h(115): error:  #20: identifier "bool" is undefined
-    bool begin(Stream& stream, bool isACK = true, bool doReset = true);
-..\HARDWARE\MP3\PlayerMini.h(115): error:  #20: identifier "Stream" is undefined
-    bool begin(Stream& stream, bool isACK = true, bool doReset = true);
-..\HARDWARE\MP3\PlayerMini.h(115): error:  #18: expected a ")"
-    bool begin(Stream& stream, bool isACK = true, bool doReset = true);
-..\HARDWARE\MP3\PlayerMini.h(117): error:  #20: identifier "bool" is undefined
-    bool waitAvailable(unsigned long duration = 0);
-..\HARDWARE\MP3\PlayerMini.h(117): error:  #18: expected a ")"
-    bool waitAvailable(unsigned long duration = 0);
-..\HARDWARE\MP3\PlayerMini.h(119): error:  #20: identifier "bool" is undefined
-    bool available();
-..\HARDWARE\MP3\PlayerMini.h(119): warning:  #1295-D: Deprecated declaration available - give arg types
-    bool available();
-..\HARDWARE\MP3\PlayerMini.h(121): warning:  #1295-D: Deprecated declaration readType - give arg types
-    uint8_t readType();
-..\HARDWARE\MP3\PlayerMini.h(123): warning:  #1295-D: Deprecated declaration read - give arg types
-    uint16_t read();
-..\HARDWARE\MP3\PlayerMini.h(127): warning:  #1295-D: Deprecated declaration next - give arg types
-    void next();
-..\HARDWARE\MP3\PlayerMini.h(129): warning:  #1295-D: Deprecated declaration previous - give arg types
-    void previous();
-..\HARDWARE\MP3\PlayerMini.h(131): error:  #18: expected a ")"
-    void play(int fileNumber=1);
-..\HARDWARE\MP3\PlayerMini.h(133): warning:  #1295-D: Deprecated declaration volumeUp - give arg types
-    void volumeUp();
-..\HARDWARE\MP3\PlayerMini.h(135): warning:  #1295-D: Deprecated declaration volumeDown - give arg types
-    void volumeDown();
-..\HARDWARE\MP3\PlayerMini.h(145): warning:  #1295-D: Deprecated declaration sleep - give arg types
-    void sleep();
-..\HARDWARE\MP3\PlayerMini.h(147): warning:  #1295-D: Deprecated declaration reset - give arg types
-    void reset();
-..\HARDWARE\MP3\PlayerMini.h(149): warning:  #1295-D: Deprecated declaration start - give arg types
-    void start();
-..\HARDWARE\MP3\PlayerMini.h(151): warning:  #1295-D: Deprecated declaration pause - give arg types
-    void pause();
-..\HARDWARE\MP3\PlayerMini.h(155): error:  #20: identifier "bool" is undefined
-    void outputSetting(bool enable, uint8_t gain);
-..\HARDWARE\MP3\PlayerMini.h(157): warning:  #1295-D: Deprecated declaration enableLoopAll - give arg types
-    void enableLoopAll();
-..\HARDWARE\MP3\PlayerMini.h(159): warning:  #1295-D: Deprecated declaration disableLoopAll - give arg types
-    void disableLoopAll();
-..\HARDWARE\MP3\PlayerMini.h(167): warning:  #1295-D: Deprecated declaration stopAdvertise - give arg types
-    void stopAdvertise();
-..\HARDWARE\MP3\PlayerMini.h(169): warning:  #1295-D: Deprecated declaration stop - give arg types
-    void stop();
-..\HARDWARE\MP3\PlayerMini.h(173): warning:  #1295-D: Deprecated declaration randomAll - give arg types
-    void randomAll();
-..\HARDWARE\MP3\PlayerMini.h(175): warning:  #1295-D: Deprecated declaration enableLoop - give arg types
-    void enableLoop();
-..\HARDWARE\MP3\PlayerMini.h(177): warning:  #1295-D: Deprecated declaration disableLoop - give arg types
-    void disableLoop();
-..\HARDWARE\MP3\PlayerMini.h(179): warning:  #1295-D: Deprecated declaration enableDAC - give arg types
-    void enableDAC();
-..\HARDWARE\MP3\PlayerMini.h(181): warning:  #1295-D: Deprecated declaration disableDAC - give arg types
-    void disableDAC();
-..\HARDWARE\MP3\PlayerMini.h(183): warning:  #1295-D: Deprecated declaration readState - give arg types
-    int readState();
-..\HARDWARE\MP3\PlayerMini.h(185): warning:  #1295-D: Deprecated declaration readVolume - give arg types
-    int readVolume();
-..\HARDWARE\MP3\PlayerMini.h(187): warning:  #1295-D: Deprecated declaration readEQ - give arg types
-    int readEQ();
-..\HARDWARE\MP3\PlayerMini.h(195): warning:  #1295-D: Deprecated declaration readFileCounts - give arg types
-    int readFileCounts();
-..\HARDWARE\MP3\PlayerMini.h(197): warning:  #1295-D: Deprecated declaration readFolderCounts - give arg types
-    int readFolderCounts();
-..\HARDWARE\MP3\PlayerMini.h(199): warning:  #1295-D: Deprecated declaration readCurrentFileNumber - give arg types
-    int readCurrentFileNumber();
-..\HARDWARE\MP3\PlayerMini.h(201): error:  #169: expected a declaration
-  };
-main.c: 30 warnings, 21 errors
-compiling stm32f10x_it.c...
-compiling system_stm32f10x.c...
-compiling led.c...
-compiling PlayerMini.cpp...
-..\HARDWARE\MP3\PlayerMini.h(71): error:  #20: identifier "Stream" is undefined
-    Stream* _serial;
-..\HARDWARE\MP3\PlayerMini.h(74): error:  #321: data member initializer is not allowed
-    unsigned long _timeOutDuration = 500;
-..\HARDWARE\MP3\PlayerMini.h(77): error:  #321: data member initializer is not allowed
-    uint8_t _sending[DFPLAYER_SEND_LENGTH] = {0x7E, 0xFF, 06, 00, 01, 00, 00, 00, 00, 0xEF};
-..\HARDWARE\MP3\PlayerMini.h(79): error:  #321: data member initializer is not allowed
-    uint8_t _receivedIndex=0;
-..\HARDWARE\MP3\PlayerMini.h(100): error:  #321: data member initializer is not allowed
-    uint8_t device = DFPLAYER_DEVICE_SD;
-..\HARDWARE\MP3\PlayerMini.h(107): error:  #321: data member initializer is not allowed
-    bool _isAvailable = false;
-..\HARDWARE\MP3\PlayerMini.h(108): error:  #321: data member initializer is not allowed
-    bool _isSending = false;
-..\HARDWARE\MP3\PlayerMini.h(115): error:  #20: identifier "Stream" is undefined
-    bool begin(Stream& stream, bool isACK = true, bool doReset = true);
-..\HARDWARE\MP3\PlayerMini.cpp(36): error:  #20: identifier "delay" is undefined
-        delay(0);
-..\HARDWARE\MP3\PlayerMini.cpp(50): error:  #131: expression must have pointer-to-class type
-    _serial->write(_sending, DFPLAYER_SEND_LENGTH);
-..\HARDWARE\MP3\PlayerMini.cpp(51): error:  #20: identifier "millis" is undefined
-    _timeOutTimer = millis();
-..\HARDWARE\MP3\PlayerMini.cpp(55): error:  #20: identifier "delay" is undefined
-      delay(10);
-..\HARDWARE\MP3\PlayerMini.cpp(85): error:  #20: identifier "millis" is undefined
-    unsigned long timer = millis();
-..\HARDWARE\MP3\PlayerMini.cpp(93): error:  #20: identifier "delay" is undefined
-      delay(0);
-..\HARDWARE\MP3\PlayerMini.cpp(98): error:  #20: identifier "Stream" is undefined
-  bool DFRobotDFPlayerMini::begin(Stream &stream, bool isACK, bool doReset){
-..\HARDWARE\MP3\PlayerMini.cpp(111): error:  #20: identifier "delay" is undefined
-      delay(200);
-..\HARDWARE\MP3\PlayerMini.cpp(229): error:  #131: expression must have pointer-to-class type
-    while (_serial->available()) {
-..\HARDWARE\MP3\PlayerMini.cpp(230): error:  #20: identifier "delay" is undefined
-      delay(0);
-..\HARDWARE\MP3\PlayerMini.cpp(232): error:  #131: expression must have pointer-to-class type
-        _received[Stack_Header] = _serial->read();
-..\HARDWARE\MP3\PlayerMini.cpp(243): error:  #131: expression must have pointer-to-class type
-        _received[_receivedIndex] = _serial->read();
-..\HARDWARE\MP3\PlayerMini.cpp(276): warning:  #111-D: statement is unreachable
-            break;
-..\HARDWARE\MP3\PlayerMini.cpp(284): error:  #20: identifier "millis" is undefined
-    if (_isSending && (millis()-_timeOutTimer>=_timeOutDuration)) {
-..\HARDWARE\MP3\PlayerMini.cpp(325): error:  #20: identifier "delay" is undefined
-    delay(200);
-..\HARDWARE\MP3\PlayerMini.cpp: 1 warning, 22 errors
-compiling delay.c...
-compiling sys.c...
-compiling usart.c...
-compiling core_cm3.c...
-compiling stm32f10x_gpio.c...
-compiling stm32f10x_rcc.c...
-compiling stm32f10x_usart.c...
-compiling misc.c...
-"..\OBJ\USART.axf" - 43 Error(s), 31 Warning(s).
-Target not created
+main.c(12): warning:  #177-D: variable "t" was declared but never referenced
+        u8 t;
+main.c(13): warning:  #177-D: variable "len" was declared but never referenced
+        u8 len; 
+main.c(14): warning:  #177-D: variable "times" was declared but never referenced
+        u16 times=0; 
+main.c(15): warning:  #177-D: variable "data" was declared but never referenced
+        u8 data[10];
+main.c: 4 warnings, 0 errors
+linking...
+Program Size: Code=5576 RO-data=352 RW-data=80 ZI-data=2056  
+FromELF: creating hex file...
+"..\OBJ\USART.axf" - 0 Error(s), 4 Warning(s).
+Load "..\\OBJ\\USART.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+</pre>
+</body>
+</html>
+se Done.
+Programming Done.
+Verify OK.
+Application running ...
+m Size: Code=5516 RO-data=352 RW-data=80 ZI-data=2056  
+FromELF: creating hex file...
+"..\OBJ\USART.axf" - 0 Error(s), 4 Warning(s).
+Load "..\\OBJ\\USART.axf" 
+Error: Flash Download failed  -  Target DLL has been cancelled
+Load "..\\OBJ\\USART.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+ "..\\OBJ\\USART.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Load "..\\OBJ\\USART.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
