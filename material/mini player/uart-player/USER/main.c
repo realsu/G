@@ -26,7 +26,7 @@
     // You can use some folders with different languages or different voices
     //MP3_set_folder(1);
     //delay_ms(10);
-MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 192); //folder 01..99, file 001..255
+MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 194); //folder 01..99, file 001..255
 	 delay_ms(5000);
     // Play single file from folder
     // This command start playing file 032.mp3 from folder 05
@@ -41,9 +41,9 @@ MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 192); //folder 01..99, file 001..255
     {
     	// MP3 Voice QUEUE processing
     	//MP3_queue_processing();
-			MP3_send_cmd(MP3_VOLUME, 0, 8); // Volume 0-30
+	//		MP3_send_cmd(MP3_VOLUME, 0, 8); // Volume 0-30
 			delay_ms(50);
-MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 194); //folder 01..99, file 001..255
+//MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 194); //folder 01..99, file 001..255
     	// Here your code
     	// ...
     	delay_ms(5000);

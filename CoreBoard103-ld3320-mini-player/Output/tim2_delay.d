@@ -1,0 +1,15 @@
+..\..\output\tim2_delay.o: ..\..\User\delay\tim2_delay.c
+..\..\output\tim2_delay.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\tim2_delay.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\tim2_delay.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\..\output\tim2_delay.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\tim2_delay.o: ..\..\User\stm32f10x_conf.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_exti.h
+..\..\output\tim2_delay.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_spi.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\misc.h
+..\..\output\tim2_delay.o: ..\..\Libraries\FWlib\inc\stm32f10x_tim.h
+..\..\output\tim2_delay.o: ..\..\User\delay\tim2_delay.h

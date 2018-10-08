@@ -1,0 +1,17 @@
+..\..\output\mp3_usart.o: ..\..\User\MP3\mp3_usart.c
+..\..\output\mp3_usart.o: ..\..\User\MP3\mp3_usart.h
+..\..\output\mp3_usart.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+..\..\output\mp3_usart.o: ..\..\User\sys\sys.h
+..\..\output\mp3_usart.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\mp3_usart.o: ..\..\Libraries\CMSIS\core_cm3.h
+..\..\output\mp3_usart.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+..\..\output\mp3_usart.o: ..\..\Libraries\CMSIS\system_stm32f10x.h
+..\..\output\mp3_usart.o: ..\..\User\stm32f10x_conf.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_exti.h
+..\..\output\mp3_usart.o: ..\..\Libraries\CMSIS\stm32f10x.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_gpio.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_rcc.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_spi.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\stm32f10x_usart.h
+..\..\output\mp3_usart.o: ..\..\Libraries\FWlib\inc\misc.h
+..\..\output\mp3_usart.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdlib.h

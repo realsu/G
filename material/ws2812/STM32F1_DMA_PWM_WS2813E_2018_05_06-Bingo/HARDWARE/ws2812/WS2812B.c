@@ -16,7 +16,7 @@
 	
 #define TIMING_ONE  50
 #define TIMING_ZERO 25
-uint16_t LED_BYTE_Buffer[500];
+ uint16_t LED_BYTE_Buffer[300];
 //---------------------------------------------------------------//
 
 void Timer2_init(void)
@@ -75,78 +75,24 @@ void Timer2_init(void)
 	TIM_DMACmd(TIM2, TIM_DMA_Update, ENABLE);
 }
 
-
-void WS2812_send_circle(uint8_t (*color)[3], uint16_t sum_leds , uint16_t run_leds)
-{
-	uint8_t i;
-	uint16_t memaddr;
-	uint16_t buffersize;
-	buffersize = (sum_leds*24)+42;	// number of bytes needed is #LEDs * 24 bytes + 42 trailing bytes，why plus 42  ????
-	memaddr = 0;				// reset buffer memory index
-
-	while (len) //
-	{
-		/*
-     g7,g6,g5,g4,g3,g2,g1,g0,r7,r6,r5,r4,r3,r2,r1,r0,b7,b6,b5,b4,b3,b2,b1,b0
-     \_____________________________________________________________________/
-                               |      _________________...
-                               |     /   __________________...
-                               |    /   /   ___________________...
-                               |   /   /   /
-                              GRB,GRB,GRB,GRB,...,STOP
-    */
-		
-		for(i=0; i<8; i++) // GREEN data 按位提取赋值
-		{
-			//第一行第二列（绿色按位左移赋值，若为1则赋值50，0则赋值25
-			LED_BYTE_Buffer[memaddr] = ((color[0][1]<<i) & 0x0080) ? TIMING_ONE:TIMING_ZERO;
-			//地址递增至绿色全赋值完毕
-			memaddr++;
-		}
-		for(i=0; i<8; i++) // RED
-		{
-				LED_BYTE_Buffer[memaddr] = ((color[0][0]<<i) & 0x0080) ? TIMING_ONE:TIMING_ZERO;
-				memaddr++;
-		}
-		for(i=0; i<8; i++) // BLUE
-		{
-				LED_BYTE_Buffer[memaddr] = ((color[0][2]<<i) & 0x0080) ? TIMING_ONE:TIMING_ZERO;
-				memaddr++;
-		}
-		//至此每一个LED的24位RGB数据赋值完毕
-		len--;
-	}
-//===================================================================//	
-//bug：最后一个周期波形不知道为什么全是高电平，故增加一个波形
-  	LED_BYTE_Buffer[memaddr] = ((color[0][2]<<8) & 0x0080) ? TIMING_ONE:TIMING_ZERO;
-//===================================================================//	
-	  memaddr++;	
-		while(memaddr < buffersize)
-		{
-			LED_BYTE_Buffer[memaddr] = 0;
-			memaddr++;
-		}
-
-		DMA_SetCurrDataCounter(DMA1_Channel2, buffersize); 	// load number of bytes to be transferred
-		DMA_Cmd(DMA1_Channel2, ENABLE); 			// enable DMA channel 6
-		TIM_Cmd(TIM2, ENABLE); 						// enable Timer 3
-		while(!DMA_GetFlagStatus(DMA1_FLAG_TC2)) ; 	// wait until transfer complete
-		TIM_Cmd(TIM2, DISABLE); 	// disable Timer 3
-		DMA_Cmd(DMA1_Channel2, DISABLE); 			// disable DMA channel 6
-		DMA_ClearFlag(DMA1_FLAG_TC2); 				// clear DMA1 Channel 6 transfer complete flag
-}
-
-
+/* This function sends data bytes out to a string of WS2812s
+ * The first argument is a pointer to the first RGB triplet to be sent
+ * The seconds argument is the number of LEDs in the chain
+ * 
+ * This will result in the RGB triplet passed by argument 1 being sent to 
+ * the LED that is the furthest away from the controller (the point where
+ * data is injected into the chain)
+ */
 void WS2812_send(uint8_t (*color)[3], uint16_t len)
 {
 	uint8_t i;
 	uint16_t memaddr;
 	uint16_t buffersize;
-	buffersize = (len*24)+42;	// number of bytes needed is #LEDs * 24 bytes + 42 trailing bytes，why plus 42  ????
+	buffersize = (len*24)+43;	// number of bytes needed is #LEDs * 24 bytes + 42 trailing bytes
 	memaddr = 0;				// reset buffer memory index
 
-	while (len) //
-	{
+	while (len)
+	{	
 		for(i=0; i<8; i++) // GREEN data
 		{
 			LED_BYTE_Buffer[memaddr] = ((color[0][1]<<i) & 0x0080) ? TIMING_ONE:TIMING_ZERO;
