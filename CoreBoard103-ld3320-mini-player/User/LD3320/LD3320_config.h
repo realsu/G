@@ -7,6 +7,7 @@
 #define CODE_AJCF	3	 //按键触发
 #define CODE_QM	  4	 //全灭
 #define CODE_JT		5  //状态
+#define CODE_YY		6  //音乐
 
 ///LED引脚相关定义
 #define LED1_PIN							GPIO_Pin_6

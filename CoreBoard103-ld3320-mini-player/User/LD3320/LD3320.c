@@ -1,5 +1,5 @@
 #include "LD3320.h"
-
+#include "mp3_usart.h"
 /************************************************************************************
 //	nAsrStatus 用来在main主程序中表示程序运行的状态，不是LD3320芯片内部的状态寄存器
 //	LD_ASR_NONE:			表示没有在作ASR识别
@@ -77,7 +77,7 @@ static uint8 LD_AsrAddFixed(void)
 {
 	uint8 k, flag;
 	uint8 nAsrAddLength;
-	#define DATE_A 5    //数组二维数值
+	#define DATE_A 6    //数组二维数值
 	#define DATE_B 20		//数组一维数值
 	//添加关键词，用户修改
 	uint8  sRecog[DATE_A][DATE_B] = {
@@ -85,7 +85,8 @@ static uint8 LD_AsrAddFixed(void)
 				"shan shuo",\
 				"ting zhi",\
 				"quan mie",\
-				"kai shi"\
+				"kai shi",\
+				"yin yue"\
 		
 																	};	
 	uint8  pCode[DATE_A] = {
@@ -93,7 +94,8 @@ static uint8 LD_AsrAddFixed(void)
 																CODE_SS,	\
 																CODE_AJCF,\
 																CODE_QM,	\
-																CODE_JT		\
+																CODE_JT,	\
+																CODE_YY	\
 															};	//添加识别码，用户修改
 	flag = 1;
 	for (k=0; k<DATE_A; k++)
@@ -142,6 +144,9 @@ static void Board_text(uint8 Code_Val)
 		break;
 		case CODE_JT:		//命令“绿灯”
 			Jt_LED();
+		break;
+		case CODE_YY:		//命令“绿灯”
+			MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 194);
 		break;
 		default:break;
 	}	

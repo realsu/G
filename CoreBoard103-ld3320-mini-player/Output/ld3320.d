@@ -14,3 +14,5 @@
 ..\..\output\ld3320.o: ..\..\Libraries\FWlib\inc\misc.h
 ..\..\output\ld3320.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 ..\..\output\ld3320.o: ..\..\User\LD3320\LD3320_config.h
+..\..\output\ld3320.o: ..\..\User\MP3\mp3_usart.h
+..\..\output\ld3320.o: ..\..\User\sys\sys.h

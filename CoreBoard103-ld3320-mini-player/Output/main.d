@@ -17,3 +17,6 @@
 ..\..\output\main.o: ..\..\User\LD3320\LD3320.h
 ..\..\output\main.o: ..\..\User\LD3320\LD3320_config.h
 ..\..\output\main.o: ..\..\User\delay\delay.h
+..\..\output\main.o: ..\..\User\ws2812\ws2812b.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_tim.h
+..\..\output\main.o: ..\..\Libraries\FWlib\inc\stm32f10x_dma.h

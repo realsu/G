@@ -10,7 +10,7 @@ Project File Date:  10/08/2018
 Build target 'USART'
 compiling main.c...
 linking...
-Program Size: Code=12460 RO-data=452 RW-data=88 ZI-data=1448  
+Program Size: Code=13796 RO-data=472 RW-data=572 ZI-data=2044  
 FromELF: creating hex file...
 "..\..\Output\Template.axf" - 0 Error(s), 0 Warning(s).
 Load "..\\..\\Output\\Template.axf" 
@@ -18,33 +18,74 @@ Erase Done.
 Programming Done.
 Verify OK.
 Application running ...
-</pre>
-</body>
-</html>
-_dbgmcu.c...
-compiling stm32f10x_dma.c...
-compiling stm32f10x_exti.c...
-compiling stm32f10x_flash.c...
-compiling stm32f10x_fsmc.c...
-compiling stm32f10x_gpio.c...
-compiling stm32f10x_i2c.c...
-compiling stm32f10x_iwdg.c...
-compiling stm32f10x_pwr.c...
-compiling stm32f10x_rcc.c...
-compiling stm32f10x_rtc.c...
-compiling stm32f10x_sdio.c...
-compiling stm32f10x_spi.c...
-compiling stm32f10x_tim.c...
-compiling stm32f10x_usart.c...
-compiling stm32f10x_wwdg.c...
-compiling main.c...
-compiling stm32f10x_it.c...
-compiling LD3320.c...
-compiling mp3_usart.c...
-compiling sys.c...
-linking...
-..\..\Output\Template.axf: Error: L6218E: Undefined symbol delay_init (referred from main.o).
-Not enough information to list image symbols.
-Finished: 1 information, 0 warning and 1 error messages.
-"..\..\Output\Template.axf" - 1 Error(s), 0 Warning(s).
+oad "..\\..\\Output\\Template.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+Load "..\\..\\Output\\Template.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...
+data shifted from memory to peripheral
+..\..\User\ws2812\WS2812B.c(64): error:  #20: identifier "DMA_PeripheralInc_Disable" is undefined
+        DMA_InitStructure.DMA_PeripheralInc = DMA_PeripheralInc_Disable;
+..\..\User\ws2812\WS2812B.c(65): error:  #20: identifier "DMA_MemoryInc_Enable" is undefined
+        DMA_InitStructure.DMA_MemoryInc = DMA_MemoryInc_Enable;                                 // automatically increase buffer index
+..\..\User\ws2812\WS2812B.c(66): error:  #20: identifier "DMA_PeripheralDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+..\..\User\ws2812\WS2812B.c(67): error:  #20: identifier "DMA_MemoryDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+..\..\User\ws2812\WS2812B.c(68): error:  #20: identifier "DMA_Mode_Normal" is undefined
+        DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;                                                   // stop DMA feed after buffer size is reached
+..\..\User\ws2812\WS2812B.c(69): error:  #20: identifier "DMA_Priority_High" is undefined
+        DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+..\..\User\ws2812\WS2812B.c(70): error:  #20: identifier "DMA_M2M_Disable" is undefined
+        DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+..\..\User\ws2812\WS2812B.c(72): warning:  #223-D: function "DMA_Init" declared implicitly
+        DMA_Init(DMA1_Channel2, &DMA_InitStructure);
+..\..\User\ws2812\WS2812B.c(124): warning:  #223-D: function "DMA_SetCurrDataCounter" declared implicitly
+                DMA_SetCurrDataCounter(DMA1_Channel2, buffersize);      // load number of bytes to be transferred
+..\..\User\ws2812\WS2812B.c(125): warning:  #223-D: function "DMA_Cmd" declared implicitly
+                DMA_Cmd(DMA1_Channel2, ENABLE);                         // enable DMA channel 6
+..\..\User\ws2812\WS2812B.c(127): warning:  #223-D: function "DMA_GetFlagStatus" declared implicitly
+                while(!DMA_GetFlagStatus(DMA1_FLAG_TC2)) ;      // wait until transfer complete
+..\..\User\ws2812\WS2812B.c(127): error:  #20: identifier "DMA1_FLAG_TC2" is undefined
+                while(!DMA_GetFlagStatus(DMA1_FLAG_TC2)) ;      // wait until transfer complete
+..\..\User\ws2812\WS2812B.c(130): warning:  #223-D: function "DMA_ClearFlag" declared implicitly
+                DMA_ClearFlag(DMA1_FLAG_TC2);                           // clear DMA1 Channel 6 transfer complete flag
+..\..\User\ws2812\WS2812B.c: 6 warnings, 10 errors
+"..\..\Output\Template.axf" - 10 Error(s), 6 Warning(s).
+Target not created
+ipheralDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_PeripheralDataSize = DMA_PeripheralDataSize_HalfWord;
+..\..\User\ws2812\WS2812B.c(67): error:  #20: identifier "DMA_MemoryDataSize_HalfWord" is undefined
+        DMA_InitStructure.DMA_MemoryDataSize = DMA_MemoryDataSize_HalfWord;
+..\..\User\ws2812\WS2812B.c(68): error:  #20: identifier "DMA_Mode_Normal" is undefined
+        DMA_InitStructure.DMA_Mode = DMA_Mode_Normal;                                                   // stop DMA feed after buffer size is reached
+..\..\User\ws2812\WS2812B.c(69): error:  #20: identifier "DMA_Priority_High" is undefined
+        DMA_InitStructure.DMA_Priority = DMA_Priority_High;
+..\..\User\ws2812\WS2812B.c(70): error:  #20: identifier "DMA_M2M_Disable" is undefined
+        DMA_InitStructure.DMA_M2M = DMA_M2M_Disable;
+..\..\User\ws2812\WS2812B.c(72): warning:  #223-D: function "DMA_Init" declared implicitly
+        DMA_Init(DMA1_Channel2, &DMA_InitStructure);
+..\..\User\ws2812\WS2812B.c(75): warning:  #223-D: function "TIM_DMACmd" declared implicitly
+        TIM_DMACmd(TIM2, TIM_DMA_Update, ENABLE);
+..\..\User\ws2812\WS2812B.c(75): error:  #20: identifier "TIM_DMA_Update" is undefined
+        TIM_DMACmd(TIM2, TIM_DMA_Update, ENABLE);
+..\..\User\ws2812\WS2812B.c(124): warning:  #223-D: function "DMA_SetCurrDataCounter" declared implicitly
+                DMA_SetCurrDataCounter(DMA1_Channel2, buffersize);      // load number of bytes to be transferred
+..\..\User\ws2812\WS2812B.c(125): warning:  #223-D: function "DMA_Cmd" declared implicitly
+                DMA_Cmd(DMA1_Channel2, ENABLE);                         // enable DMA channel 6
+..\..\User\ws2812\WS2812B.c(126): warning:  #223-D: function "TIM_Cmd" declared implicitly
+                TIM_Cmd(TIM2, ENABLE);                                          // enable Timer 3
+..\..\User\ws2812\WS2812B.c(127): warning:  #223-D: function "DMA_GetFlagStatus" declared implicitly
+                while(!DMA_GetFlagStatus(DMA1_FLAG_TC2)) ;      // wait until transfer complete
+..\..\User\ws2812\WS2812B.c(127): error:  #20: identifier "DMA1_FLAG_TC2" is undefined
+                while(!DMA_GetFlagStatus(DMA1_FLAG_TC2)) ;      // wait until transfer complete
+..\..\User\ws2812\WS2812B.c(130): warning:  #223-D: function "DMA_ClearFlag" declared implicitly
+                DMA_ClearFlag(DMA1_FLAG_TC2);                           // clear DMA1 Channel 6 transfer complete flag
+..\..\User\ws2812\WS2812B.c: 10 warnings, 17 errors
+"..\..\Output\Template.axf" - 17 Error(s), 10 Warning(s).
 Target not created
