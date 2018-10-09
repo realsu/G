@@ -361,7 +361,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\LD3320;..\..\User\MP3;..\..\User\delay;..\..\User\sys</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS;..\..\User;..\..\Libraries\FWlib\inc;..\..\User\LD3320;..\..\User\MP3;..\..\User\delay;..\..\User\sys;..\..\User\ws2812</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -608,6 +608,16 @@
               <FileName>sys.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\User\sys\sys.c</FilePath>
+            </File>
+          </Files>
+        </Group>
+        <Group>
+          <GroupName>ws2812</GroupName>
+          <Files>
+            <File>
+              <FileName>WS2812B.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\User\ws2812\WS2812B.c</FilePath>
             </File>
           </Files>
         </Group>

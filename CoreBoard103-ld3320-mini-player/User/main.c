@@ -44,26 +44,51 @@ int main(void)
     //delay_ms(10);
 	//MP3_send_cmd(MP3_PLAY_FOLDER_FILE, 5, 194); //folder 01..99, file 001..255
 	//delay_ms(5000);
-	WS2812_send(rgb0,8);
-	LD3320_main();				//LD3320执行函数
-	for(;;)
-	{
 		WS2812_send(rgb0,8);
-		for(i=0;i<53;i++)
+	for(i=0;i<53;i++)
 		{
 			WS2812_send(&rgb1[i],8);
 			delay_ms(50);
 		}
-		for(i=0;i<53;i++)
-		{
-			WS2812_send(&rgb2[i],8);
-			delay_ms(50);
-		}
-		for(i=0;i<53;i++)
-		{
-			WS2812_send(&rgb3[i],8);
-			delay_ms(50);
-		}
+	LD3320_main();				//LD3320执行函数
+
+//	while(1)
+//	{
+//		WS2812_send(rgb0,8);
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb1[i],8);
+//			delay_ms(50);
+//		}
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb2[i],8);
+//			delay_ms(50);
+//		}
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb3[i],8);
+//			delay_ms(50);
+//		}
+//	}
+		for(;;)
+	{
+//		WS2812_send(rgb0,8);
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb1[i],8);
+//			delay_ms(50);
+//		}
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb2[i],8);
+//			delay_ms(50);
+//		}
+//		for(i=0;i<53;i++)
+//		{
+//			WS2812_send(&rgb3[i],8);
+//			delay_ms(50);
+//		}
 	}
 }
 /*********************************************END OF FILE**********************/
