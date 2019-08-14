@@ -1,0 +1,13 @@
+.\obj\tapdev.o: ..\..\Source\src\uIP_enc28j60\tapdev.c
+.\obj\tapdev.o: ..\..\Source\src\uIP_enc28j60\Tapdev.h
+.\obj\tapdev.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\uip.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\tapdev.o: ..\..\Source\src\uIP_enc28j60\uip-conf.h
+.\obj\tapdev.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\inttypes.h
+.\obj\tapdev.o: ..\..\Source\inc\tcp_demo.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\psock.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\pt.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\lc.h
+.\obj\tapdev.o: ..\..\Libraries\uIP-1.0\uip\lc-switch.h

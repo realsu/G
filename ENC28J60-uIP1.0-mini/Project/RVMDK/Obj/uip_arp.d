@@ -1,0 +1,14 @@
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\uip_arp.c
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\uip_arp.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\uip.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\uip_arp.o: ..\..\Source\src\uIP_enc28j60\uip-conf.h
+.\obj\uip_arp.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\inttypes.h
+.\obj\uip_arp.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\uip_arp.o: ..\..\Source\inc\tcp_demo.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\psock.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\pt.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\lc.h
+.\obj\uip_arp.o: ..\..\Libraries\uIP-1.0\uip\lc-switch.h
+.\obj\uip_arp.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\string.h

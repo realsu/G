@@ -1,0 +1,17 @@
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\uip.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\httpd-cgi.o: ..\..\Source\src\uIP_enc28j60\uip-conf.h
+.\obj\httpd-cgi.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\inttypes.h
+.\obj\httpd-cgi.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
+.\obj\httpd-cgi.o: ..\..\Source\inc\tcp_demo.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\psock.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\pt.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\lc.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\uip\lc-switch.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\apps\webserver\httpd.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.h
+.\obj\httpd-cgi.o: ..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.h
+.\obj\httpd-cgi.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\obj\httpd-cgi.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\string.h
