@@ -55,7 +55,7 @@ PB15: SPI2 MOSI
 #include <stdio.h>
 #include "usart_printf.h"
 #include "systick.h"
-
+#include "SPI-fd.h"
 
 /* 实现uip需要包含的h文件 */
 #include "uip.h"
@@ -285,8 +285,8 @@ static void Init_fd(void)
 	GPIO_Configuration();
 
 	/* 配置串口 */
-	USART_Configuration();
-
+	USART2_Configuration();
+    uart_init(57600);
 
 
 	/* 配置systic作为1ms中断,这个函数在

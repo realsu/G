@@ -1,144 +1,105 @@
-/****************************************************************************
-
-*
-* 文件名: usart_printf.c
-* 内容简述: 本模块实现printf和scanf函数重定向到串口1
-*	实现重定向，只需要添加2个函数
-		int fputc(int ch, FILE *f);
-		int fgetc(FILE *f);
-*
-
-
-*
-*/
-
-/* Includes ------------------------------------------------------------------*/
-#include "stm32f10x.h"
-#include <stdio.h>
-#include "usart_printf.h"
 #include "sys.h"
-//#include "usart.h"
+#include "usart.h"
 #include <stdarg.h>
-/*******************************************************************************
-	函数名：PrintfLogo
-	输  入: 例程名称和例程最后更新日期
-	输  出:
-	功能说明：
+////////////////////////////////////////////////////////////////////////////////// 	 
+//如果使用ucos,则包括下面的头文件即可.
+#if SYSTEM_SUPPORT_UCOS
+#include "includes.h"					//ucos 使用	  
+#endif
+//////////////////////////////////////////////////////////////////////////////////	 
+//本程序只供学习使用，未经作者许可，不得用于其它任何用途
+//ALIENTEK STM32开发板
+//串口1初始化		   
+//正点原子@ALIENTEK
+//技术论坛:www.openedv.com
+//修改日期:2012/8/18
+//版本：V1.5
+//版权所有，盗版必究。
+//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
+//All rights reserved
+//********************************************************************************
+//V1.3修改说明 
+//支持适应不同频率下的串口波特率设置.
+//加入了对printf的支持
+//增加了串口接收命令功能.
+//修正了printf第一个字符丢失的bug
+//V1.4修改说明
+//1,修改串口初始化IO的bug
+//2,修改了USART_RX_STA,使得串口最大接收字节数为2的14次方
+//3,增加了USART_REC_LEN,用于定义串口最大允许接收的字节数(不大于2的14次方)
+//4,修改了EN_USART1_RX的使能方式
+//V1.5修改说明
+//1,增加了对UCOSII的支持
+////////////////////////////////////////////////////////////////////////////////// 	  
+ 
+
+//////////////////////////////////////////////////////////////////
+//加入以下代码,支持printf函数,而不需要选择use MicroLIB	 
+/*
+#if 1
+#pragma import(__use_no_semihosting)             
+//标准库需要的支持函数                 
+struct __FILE 
+{ 
+	int handle; 
+
+}; 
+
+FILE __stdout;       
+//定义_sys_exit()以避免使用半主机模式    
+void _sys_exit(int x) 
+{ 
+	x = x; 
+} 
 */
-void PrintfLogo(char *strName, char *strDate)
-{
-	printf("*************************************************************\n\r");
-	printf("* Example Name : %s\r\n", strName);
-	printf("* Update Date  : %s\r\n", strDate);
-	printf("* StdPeriph_Lib Version : V3.1.2\n\r");
-	printf("* \n\r");
-	printf("* Copyright ourstm.5d6d.com \r\n");
-	printf("* QQ    : 9191274 \r\n");
-	printf("* Email : sun68@qq.com \r\n");
-	printf("*************************************************************\n\r");
-}
-
-/*******************************************************************************
-	函数名：USART_Configuration
-	输  入:
-	输  出:
-	功能说明：
-	初始化串口硬件设备，未启用中断。
-	配置步骤：
-	(1)打开GPIO和USART的时钟
-	(2)设置USART两个管脚GPIO模式
-	(3)配置USART数据格式、波特率等参数
-	(4)最后使能USART功能
-*/
-void USART2_Configuration(void)
-{
-	GPIO_InitTypeDef GPIO_InitStructure;
-	USART_InitTypeDef USART_InitStructure;
-
-	/* 第1步：打开GPIO和USART部件的时钟 */
-	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA | RCC_APB2Periph_AFIO, ENABLE);
-	//RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1, ENABLE);
-    RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
-    
-	/* 第2步：将USART Tx的GPIO配置为推挽复用模式 */
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;
-	GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-	/* 第3步：将USART Rx的GPIO配置为浮空输入模式
-		由于CPU复位后，GPIO缺省都是浮空输入模式，因此下面这个步骤不是必须的
-		但是，我还是建议加上便于阅读，并且防止其它地方修改了这个口线的设置参数
-	*/
-	GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
-	GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-	/*  第3步已经做了，因此这步可以不做
-		GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
-	*/
-	GPIO_Init(GPIOA, &GPIO_InitStructure);
-
-
-	/* 第4步：配置USART参数
-	    - BaudRate = 115200 baud
-	    - Word Length = 8 Bits
-	    - One Stop Bit
-	    - No parity
-	    - Hardware flow control disabled (RTS and CTS signals)
-	    - Receive and transmit enabled
-	*/
-	USART_InitStructure.USART_BaudRate = 57600;
-	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
-	USART_InitStructure.USART_StopBits = USART_StopBits_1;
-	USART_InitStructure.USART_Parity = USART_Parity_No;
-	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;
-	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;
-	USART_Init(USART2, &USART_InitStructure);
-
-	/* 第5步：使能 USART， 配置完毕 */
-	USART_Cmd(USART2, ENABLE);
-
-	/* CPU的小缺陷：串口配置好，如果直接Send，则第1个字节发送不出去
-		如下语句解决第1个字节无法正确发送出去的问题 */
-	USART_ClearFlag(USART2, USART_FLAG_TC);     /* 清发送外城标志，Transmission Complete flag */
-}
-
-/*******************************************************************************
-	函数名：fputc
-	输  入:
-	输  出:
-	功能说明：
-	重定义putc函数，这样可以使用printf函数从串口1打印输出
-*/
+/*
+//重定义fputc函数 
 int fputc(int ch, FILE *f)
-{
-	/* Place your implementation of fputc here */
-	/* e.g. write a character to the USART */
-	USART_SendData(USART2, (uint8_t) ch);
-
-	/* Loop until the end of transmission */
-	while (USART_GetFlagStatus(USART2, USART_FLAG_TC) == RESET)
-	{}
-
+{      
+	while((USART1->SR&0X40)==0);//循环发送,直到发送完毕   
+    USART1->DR = (u8) ch;      
 	return ch;
 }
-
-/*******************************************************************************
-	函数名：fputc
-	输  入:
-	输  出:
-	功能说明：
-	重定义getc函数，这样可以使用scanff函数从串口1输入数据
 */
-int fgetc(FILE *f)
-{
-	/* 等待串口1输入数据 */
-	while (USART_GetFlagStatus(USART2, USART_FLAG_RXNE) == RESET)
-	{}
 
-	return (int)USART_ReceiveData(USART2);
+/*
+ * 函数名：fputc
+ * 描述  ：重定向c库函数printf到USART1
+ * 输入  ：无
+ * 输出  ：无
+ * 调用  ：由printf调用
+ */
+/*
+int fputc(int ch, FILE *f)
+{
+// 将Printf内容发往串口
+  USART_SendData(USART1, (unsigned char) ch);
+  while (!(USART1->SR & USART_FLAG_TXE));
+ 
+  return (ch);
 }
 
+#endif 
+*/
+
+/*使用microLib的方法*/
+ /* 
+int fputc(int ch, FILE *f)
+{
+	USART_SendData(USART1, (uint8_t) ch);
+
+	while (USART_GetFlagStatus(USART1, USART_FLAG_TC) == RESET) {}	
+   
+    return ch;
+}
+int GetKey (void)  { 
+
+    while (!(USART1->SR & USART_FLAG_RXNE));
+
+    return ((int)(USART1->DR & 0x1FF));
+}
+*/
+ 
 
 //串口1中断服务程序
 //注意,读取USARTx->SR能避免莫名其妙的错误   	
@@ -203,6 +164,57 @@ void uart_init(u32 bound){
     USART_Cmd(USART1, ENABLE);                    //使能串口 
 
 }
+
+
+
+//初始化IO 串口2
+//bound:波特率
+void uart2_init(u32 bound){
+    //GPIO端口设置
+  GPIO_InitTypeDef GPIO_InitStructure;
+	USART_InitTypeDef USART_InitStructure;
+	NVIC_InitTypeDef NVIC_InitStructure;
+
+	/* config USART2 clock */
+	RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOA, ENABLE);
+	RCC_APB1PeriphClockCmd(RCC_APB1Periph_USART2, ENABLE);
+	
+ 	USART_DeInit(USART2);  //复位串口1
+	 /* USART2 GPIO config */
+   /* Configure USART2 Tx (PA.02) as alternate function push-pull */
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_2; //PA.9
+    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;	//复用推挽输出
+    GPIO_Init(GPIOA, &GPIO_InitStructure); //初始化PA9
+   
+  /* Configure USART2 Rx (PA.03) as input floating */
+    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_3;
+    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
+    GPIO_Init(GPIOA, &GPIO_InitStructure);  //初始化PA10
+
+   //Usart1 NVIC 配置
+
+  NVIC_InitStructure.NVIC_IRQChannel = USART2_IRQn;
+	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=0 ;//抢占优先级3
+	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		//子优先级3
+	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
+	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器
+  
+   //USART 初始化设置
+
+	USART_InitStructure.USART_BaudRate = bound;//一般设置为9600;
+	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//字长为8位数据格式
+	USART_InitStructure.USART_StopBits = USART_StopBits_1;//一个停止位
+	USART_InitStructure.USART_Parity = USART_Parity_No;//无奇偶校验位
+	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//无硬件数据流控制
+	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	//收发模式
+
+    USART_Init(USART2, &USART_InitStructure); //初始化串口
+    USART_ITConfig(USART2, USART_IT_RXNE, ENABLE);//开启中断
+    USART_Cmd(USART2, ENABLE);                    //使能串口 
+
+}
+
 
 
 /*
@@ -341,6 +353,17 @@ void USART1_printf(USART_TypeDef* USARTx, uint8_t *Data,...)
 	}
 }
 
+void Uart2ASendStr (u8 *pucStr, u8 ulNum) 
+{ 
+	u8 i; 
+for(i = 0;i<ulNum;i++) 
+{ 
+	USART_SendData(USART2,*pucStr++);
+	while( USART_GetFlagStatus(USART2,USART_FLAG_TXE) == RESET );
+     
+}  
+}
+
 
 void Uart1ASendStr (u8 *pucStr, u8 ulNum) 
 { 
@@ -352,17 +375,6 @@ for(i = 0;i<ulNum;i++)
 
 }  
 } 
-
-void Uart2ASendStr (u8 *pucStr, u8 ulNum) 
-{ 
-	u8 i; 
-for(i = 0;i<ulNum;i++) 
-{ 
-	USART_SendData(USART2,*pucStr++);
-	while( USART_GetFlagStatus(USART2,USART_FLAG_TXE) == RESET );
-     
-}  
-}
 
 void COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff)
 {
@@ -488,64 +500,69 @@ void USART1_IRQHandler(void)                	//串口1中断服务程序
 #ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
 	OSIntEnter();    
 #endif
-    if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET) 
-    {
-		USART_ClearITPendingBit(USART1,USART_IT_RXNE); 
-        USART_RX_BUF[USART_RX_STA]=USART_ReceiveData(USART1);
-		USART_RX_STA++; 
-		if(USART_RX_BUF[0] == 0x80 || USART_RX_STA == USART_REC_LEN)    
+	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 		{
-			if(USART_RX_BUF[1] == 0x00)                     
+		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
+		
+		if((USART_RX_STA&0x8000)==0)//接收未完成
 			{
-				printf("%s\r\n",USART_RX_BUF);
-				USART_RX_STA=0;                                   
-			} 
-			else
-			{
-				USART_RX_STA=0;  
-			}
-		}
-	}
-//	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
-//		{
-//		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
-//		//printf("Res =USART_ReceiveData(USART1);\n\r");
-//		if((USART_RX_STA&0x8000)==0)//接收未完成
-//			{
-//                //printf("if((USART_RX_STA&0x8000)==0)\n\r");
-//			if(USART_RX_STA&0x4000)//接收到了0x0d
-//				{
-//                    //printf("if(USART_RX_STA&0x4000\n\r");
-//				if(Res!=0x0a)
-//                {
-//                    USART_RX_STA=0;//接收错误,重新开始
-//                    //printf("if(Res!=0x0a)\n\r");
-//                }
-//				else USART_RX_STA|=0x8000;	//接收完成了
-//                    //printf("else USART_RX_STA|=0x8000;	\n\r");
-//				}
-//			else //还没收到0X0D
-//				{	//printf("else no 0x0D\n\r");
-//				if(Res==0x0d)
-//                {
-//                    USART_RX_STA|=0x4000;
-//                    //printf("if(Res==0x0d)\n\r");
-//                }
-//				else
-//					{
-//					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
-//                   // printf("USART_RX_BUF[USART_RX_STA&0X3FFF]=Res\n\r");
-//					USART_RX_STA++;
-//                    printf("%x",USART_RX_STA++);
-//                    //printf("Res = %d",Res);
-//					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
-//					}		 
-//				}
-//			}   		 
-//     } 
-    
+			if(USART_RX_STA&0x4000)//接收到了0x0d
+				{
+				if(Res!=0x0a)USART_RX_STA=0;//接收错误,重新开始
+				else USART_RX_STA|=0x8000;	//接收完成了 
+				}
+			else //还没收到0X0D
+				{	
+				if(Res==0x0d)USART_RX_STA|=0x4000;
+				else
+					{
+					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
+					USART_RX_STA++;
+					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
+					}		 
+				}
+			}   		 
+     } 
 #ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
 	OSIntExit();  											 
 #endif
 }	 
 #endif
+		 
+		 
+#if EN_USART2_RX   //如果使能了接收
+void USART2_IRQHandler(void)                	//串口1中断服务程序
+	{
+	u8 Res;
+#ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
+	OSIntEnter();    
+#endif
+	if(USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
+		{
+		Res =USART_ReceiveData(USART2);//(USART1->DR);	//读取接收到的数据
+		
+		if((USART2_RX_STA&0x8000)==0)//接收未完成
+			{
+			if(USART2_RX_STA&0x4000)//接收到了0x0d
+				{
+				if(Res!=0x0a)USART2_RX_STA=0;//接收错误,重新开始
+				else USART2_RX_STA|=0x8000;	//接收完成了 
+				}
+			else //还没收到0X0D
+				{	
+				if(Res==0x0d)USART2_RX_STA|=0x4000;
+				else
+					{
+					USART2_RX_BUF[USART2_RX_STA&0X3FFF]=Res ;
+					USART2_RX_STA++;
+					if(USART2_RX_STA>(USART2_REC_LEN-1))USART2_RX_STA=0;//接收数据错误,重新开始接收	  
+					}		 
+				}
+			}   		 
+     } 
+#ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
+	OSIntExit();  											 
+#endif
+}	 
+#endif
+

@@ -31620,7 +31620,161 @@ N  */
 N
 N/******************* (C) COPYRIGHT 2009 STMicroelectronics *****END OF FILE****/
 L 8 "..\..\Source\src\tcp_demo.c" 2
+N#include "usart_printf.h"
+L 1 "..\..\Source\inc\usart_printf.h" 1
+N/****************************************************************************
+N* Copyright (C), 2009-2010, www.armfly.com
+N*
+N* 文件名: usart_printf.h
+N* 内容简述: 头文件
+N*
+N* 文件历史:
+N* 版本号  日期       作者    说明
+N* v0.1    2009-12-27 armfly  创建该文件
+N*
+N*/
 N
+N/* Define to prevent recursive inclusion -------------------------------------*/
+N#ifndef __USART_PRINTF_H
+N#define __USART_PRINTF_H
+N
+N#include "stdio.h"	
+N#include "sys.h" 
+L 1 "..\..\Source\inc\sys.h" 1
+N#ifndef __SYS_H
+N#define __SYS_H	
+N#include "stm32f10x.h"
+N//////////////////////////////////////////////////////////////////////////////////	 
+N//本程序只供学习使用，未经作者许可，不得用于其它任何用途
+N//ALIENTEK STM32开发板		   
+N//正点原子@ALIENTEK
+N//技术论坛:www.openedv.com
+N//修改日期:2012/8/18
+N//版本：V1.7
+N//版权所有，盗版必究。
+N//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
+N//All rights reserved
+N////////////////////////////////////////////////////////////////////////////////// 	 
+N
+N//0,不支持ucos
+N//1,支持ucos
+N#define SYSTEM_SUPPORT_UCOS		0		//定义系统文件夹是否支持UCOS
+N																	    
+N	 
+N//位带操作,实现51类似的GPIO控制功能
+N//具体实现思想,参考<<CM3权威指南>>第五章(87页~92页).
+N//IO口操作宏定义
+N#define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
+N#define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
+N#define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
+N//IO口地址映射
+N#define GPIOA_ODR_Addr    (GPIOA_BASE+12) //0x4001080C 
+N#define GPIOB_ODR_Addr    (GPIOB_BASE+12) //0x40010C0C 
+N#define GPIOC_ODR_Addr    (GPIOC_BASE+12) //0x4001100C 
+N#define GPIOD_ODR_Addr    (GPIOD_BASE+12) //0x4001140C 
+N#define GPIOE_ODR_Addr    (GPIOE_BASE+12) //0x4001180C 
+N#define GPIOF_ODR_Addr    (GPIOF_BASE+12) //0x40011A0C    
+N#define GPIOG_ODR_Addr    (GPIOG_BASE+12) //0x40011E0C    
+N
+N#define GPIOA_IDR_Addr    (GPIOA_BASE+8) //0x40010808 
+N#define GPIOB_IDR_Addr    (GPIOB_BASE+8) //0x40010C08 
+N#define GPIOC_IDR_Addr    (GPIOC_BASE+8) //0x40011008 
+N#define GPIOD_IDR_Addr    (GPIOD_BASE+8) //0x40011408 
+N#define GPIOE_IDR_Addr    (GPIOE_BASE+8) //0x40011808 
+N#define GPIOF_IDR_Addr    (GPIOF_BASE+8) //0x40011A08 
+N#define GPIOG_IDR_Addr    (GPIOG_BASE+8) //0x40011E08 
+N 
+N//IO口操作,只对单一的IO口!
+N//确保n的值小于16!
+N#define PAout(n)   BIT_ADDR(GPIOA_ODR_Addr,n)  //输出 
+N#define PAin(n)    BIT_ADDR(GPIOA_IDR_Addr,n)  //输入 
+N
+N#define PBout(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  //输出 
+N#define PBin(n)    BIT_ADDR(GPIOB_IDR_Addr,n)  //输入 
+N
+N#define PCout(n)   BIT_ADDR(GPIOC_ODR_Addr,n)  //输出 
+N#define PCin(n)    BIT_ADDR(GPIOC_IDR_Addr,n)  //输入 
+N
+N#define PDout(n)   BIT_ADDR(GPIOD_ODR_Addr,n)  //输出 
+N#define PDin(n)    BIT_ADDR(GPIOD_IDR_Addr,n)  //输入 
+N
+N#define PEout(n)   BIT_ADDR(GPIOE_ODR_Addr,n)  //输出 
+N#define PEin(n)    BIT_ADDR(GPIOE_IDR_Addr,n)  //输入
+N
+N#define PFout(n)   BIT_ADDR(GPIOF_ODR_Addr,n)  //输出 
+N#define PFin(n)    BIT_ADDR(GPIOF_IDR_Addr,n)  //输入
+N
+N#define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  //输出 
+N#define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  //输入
+N
+N
+N
+Nvoid NVIC_Configuration(void);
+N
+N
+N
+N#endif
+L 19 "..\..\Source\inc\usart_printf.h" 2
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART_REC_LEN  			200  	//定义最大接收字节数 200
+N#define EN_USART1_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART_RX_BUF[200]; 
+Nextern u16 USART_RX_STA;         		//接收状态标记	
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART2_REC_LEN  		200  	//定义最大接收字节数 200
+N#define EN_USART2_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART2_RX_BUF[USART2_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART2_RX_BUF[200]; 
+Nextern u16 USART2_RX_STA;         		//接收状态标记
+N
+N//驱动器参数
+N//define data address (A1)
+N#define MotorPowerAddress							0x00
+N#define	MotorPowerOn 								0x01
+N#define	MotorPowerOff								0x00
+N#define	ModeChoiceAddress							0x02
+N#define ModeChoiceVelocityPC						0xC4
+N#define ModeChoicePositionPC						0xD0
+N#define ModeChoicePositionPluse					    0xC0
+N#define ModeChoiceTorquePC							0xC1
+N
+N#define VelModSetAccAddress							0x0A
+N#define VelModSetValAddress							0x06
+N#define PosModSetHighAddress						0x50
+N#define PosModSetLowAddress							0x05
+N#define PosModChangeAbsOrRelaControlAdd	            0x51
+N#define PosModSetVelLimitAddress				    0x1D
+N#define TorModSetValAddress							0x08
+N#define FineZPointAddress							0x53
+N#define ClearErrorAddress							0x4A
+N
+N
+N#define UART1   1
+N#define UART2   2
+N#define UART1_2	3
+N
+Nvoid PrintfLogo(char *strName, char *strDate);
+Nvoid USART2_Configuration(void);
+N
+N//如果想串口中断接收，请不要注释以下宏定义
+Nvoid uart_init(u32 bound);
+Nvoid Uart2ASendStr (u8 *pucStr, u8 ulNum);
+Nvoid Uart1ASendStr (u8 *pucStr, u8 ulNum);
+N//以下为驱动器通讯协议
+N
+Nvoid COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff);
+Nvoid COM_GIIMBot_DRV_Mode_Choice(unsigned char UARTx, unsigned char ModeChoice);
+N//void COM_GIIMBot_DRV_Vel_Mode_Set Acc(unsigned char USRTx, );
+Nvoid COM_GIIMBot_DRV_Position_Mode(unsigned char UARTx, short Temp_PWM, int Temp_Position);
+N#endif
+N
+N
+L 9 "..\..\Source\src\tcp_demo.c" 2
 Nstatic void aborted(void);
 Nstatic void timedout(void);
 Nstatic void closed(void);
@@ -31630,7 +31784,7 @@ Nstatic void acked(void);
 Nstatic void senddata(void);
 N
 Nstatic uint8_t test_data[2048];   /* 1K测试数据 */
-N
+Nu8 data[4];
 N//#define LED1_ON()	GPIO_SetBits(GPIOB,  GPIO_Pin_5);
 N#define LED1_ON()	GPIO_ResetBits(GPIOA,  GPIO_Pin_9);
 N#define LED2_ON()	GPIO_ResetBits(GPIOA,  GPIO_Pin_10);
@@ -31656,28 +31810,28 @@ N{
 N	if (uip_aborted())
 X	if ((uip_flags & 32))
 N	{
-N		printf("uip_aborted!\r\n");
+N		//printf("uip_aborted!\r\n");
 N		aborted();
 N	}
 N
 N	if (uip_timedout())
 X	if ((uip_flags & 128))
 N	{
-N		printf("uip_timedout!\r\n");
+N		//printf("uip_timedout!\r\n");
 N		timedout();
 N	}
 N
 N	if (uip_closed())
 X	if ((uip_flags & 16))
 N	{
-N		printf("uip_closed!\r\n");
+N		//printf("uip_closed!\r\n");
 N		closed();
 N	}
 N
 N	if (uip_connected())
 X	if ((uip_flags & 64))
 N	{
-N		printf("uip_connected!\r\n");
+N		//printf("uip_connected!\r\n");
 N		connected();
 N	}
 N
@@ -31783,14 +31937,26 @@ N		if (led == '1')
 N		{
 N			LED1_ON();
 X			GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), ((uint16_t)0x0200));;
-N            printf("led 1 on\r\n");
-N			s->textptr = "Led 1 On!";
+N            //printf("on\r\n");
+N            
+N			s->textptr = "Motor On!";
+N
+N            //数据地址A1
+N                data[0] = 0x80; 													
+N            //数据高8位
+N                data[1] = 0x00; 													
+N            //数据底8位
+N                data[2] = 0x80;										
+N            //数据校验和(A1+A2+A3)
+N                data[3] = 0x00;
+N            Uart1ASendStr(data,4);
+N            Uart2ASendStr(data,4);
 N		}
 N		else if (led == '2')
 N		{
 N			LED2_ON();
 X			GPIO_ResetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), ((uint16_t)0x0400));;
-N            printf("led 2 on\r\n");
+N            //printf("led 2 on\r\n");
 N			s->textptr = "Led 2 On!";			
 N		}
 N		
@@ -31808,14 +31974,24 @@ N		if (led == '1')
 N		{
 N			LED1_OFF();
 X			GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), ((uint16_t)0x0200));;
-N            printf("led 1 off\r\n");
-N			s->textptr = "Led 1 Off!";
+N            //printf("off\r\n");
+N            //数据地址A1
+N            data[0] = 0x00; 													
+N            //数据高8位
+N            data[1] = 0x00; 													
+N            //数据底8位
+N            data[2] = 0x01;										
+N            //数据校验和(A1+A2+A3)
+N            data[3] = data[0] + data[1] + data[2];
+N            Uart1ASendStr(data,4);
+N            Uart2ASendStr(data,4);
+N			s->textptr = "Motor Off!";
 N		}
 N		else if (led == '2')
 N		{
 N			LED2_OFF();
 X			GPIO_SetBits(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), ((uint16_t)0x0400));;
-N            printf("led 2 off\r\n");
+N            //printf("led 2 off\r\n");
 N			s->textptr = "Led 2 Off!";				
 N		}
 N				
@@ -31823,8 +31999,8 @@ N		s->textlen = strlen((char *)s->textptr);
 N	}
 N	/* 发送数据测试 sendtest
 N		语法：sendtest
-N		例如 ： 
-N		ledon 2 表示点亮LED2	
+N		例如 ：
+N		ledon 2 表示点亮LED2
 N	*/
 N	else if ((uip_len == 6) && (memcmp("txtest", uip_appdata, 6) == 0))
 N	{
@@ -31858,7 +32034,7 @@ N	struct tcp_demo_appstate *s = (struct tcp_demo_appstate *)&uip_conn->appstate;
 N	
 N	if (s->state == STATE_CMD)
 N	{
-N		printf("uip_newdata!\r\n");
+N		//printf("uip_newdata!\r\n");
 N		TCP_Cmd(s);
 N	}
 N	else if (s->state == STATE_TX_TEST)	/* 上传测试状态 */
@@ -31913,7 +32089,7 @@ N			/*
 N				只在命令状态打印调试信息 
 N				避免发送测试时，影响通信速度		
 N			*/
-N			printf("uip_acked!\r\n");
+N			//printf("uip_acked!\r\n");
 N			break;
 N
 N		case STATE_TX_TEST:

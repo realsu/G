@@ -39,3 +39,5 @@
 .\obj\tcp_demo.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h
 .\obj\tcp_demo.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\obj\tcp_demo.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
+.\obj\tcp_demo.o: ..\..\Source\inc\usart_printf.h
+.\obj\tcp_demo.o: ..\..\Source\inc\sys.h

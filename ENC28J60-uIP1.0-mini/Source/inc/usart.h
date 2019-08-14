@@ -1,19 +1,5 @@
-/****************************************************************************
-* Copyright (C), 2009-2010, www.armfly.com
-*
-* ÎÄ¼şÃû: usart_printf.h
-* ÄÚÈİ¼òÊö: Í·ÎÄ¼ş
-*
-* ÎÄ¼şÀúÊ·:
-* °æ±¾ºÅ  ÈÕÆÚ       ×÷Õß    ËµÃ÷
-* v0.1    2009-12-27 armfly  ´´½¨¸ÃÎÄ¼ş
-*
-*/
-
-/* Define to prevent recursive inclusion -------------------------------------*/
-#ifndef __USART_PRINTF_H
-#define __USART_PRINTF_H
-
+#ifndef __USART_H
+#define __USART_H
 #include "stdio.h"	
 #include "sys.h" 
 
@@ -25,7 +11,7 @@ extern u8  USART_RX_BUF[USART_REC_LEN]; //½ÓÊÕ»º³å,×î´óUSART_REC_LEN¸ö×Ö½Ú.Ä©×Ö½
 extern u16 USART_RX_STA;         		//½ÓÊÕ×´Ì¬±ê¼Ç	
 
 ////////////////////////////////////////////////////////////////////////////////// 	
-#define USART2_REC_LEN  		200  	//¶¨Òå×î´ó½ÓÊÕ×Ö½ÚÊı 200
+#define USART2_REC_LEN  			200  	//¶¨Òå×î´ó½ÓÊÕ×Ö½ÚÊı 200
 #define EN_USART2_RX 			1		//Ê¹ÄÜ£¨1£©/½ûÖ¹£¨0£©´®¿Ú1½ÓÊÕ
 	  	
 extern u8  USART2_RX_BUF[USART2_REC_LEN]; //½ÓÊÕ»º³å,×î´óUSART_REC_LEN¸ö×Ö½Ú.Ä©×Ö½ÚÎª»»ĞĞ·û 
@@ -57,11 +43,12 @@ extern u16 USART2_RX_STA;         		//½ÓÊÕ×´Ì¬±ê¼Ç
 #define UART2   2
 #define UART1_2	3
 
-void PrintfLogo(char *strName, char *strDate);
-void USART2_Configuration(void);
 
 //Èç¹ûÏë´®¿ÚÖĞ¶Ï½ÓÊÕ£¬Çë²»Òª×¢ÊÍÒÔÏÂºê¶¨Òå
 void uart_init(u32 bound);
+void uart2_init(u32 bound);
+//int fputc(int ch, FILE *f);
+//void USART1_printf(USART_TypeDef* USARTx, uint8_t *Data,...);
 void Uart2ASendStr (u8 *pucStr, u8 ulNum);
 void Uart1ASendStr (u8 *pucStr, u8 ulNum);
 //ÒÔÏÂÎªÇı¶¯Æ÷Í¨Ñ¶Ğ­Òé
@@ -70,6 +57,9 @@ void COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff)
 void COM_GIIMBot_DRV_Mode_Choice(unsigned char UARTx, unsigned char ModeChoice);
 //void COM_GIIMBot_DRV_Vel_Mode_Set Acc(unsigned char USRTx, );
 void COM_GIIMBot_DRV_Position_Mode(unsigned char UARTx, short Temp_PWM, int Temp_Position);
+
+//short RoundEx(const double dInput);
+
 #endif
 
 

@@ -27509,9 +27509,139 @@ N/* Define to prevent recursive inclusion -------------------------------------*
 N#ifndef __USART_PRINTF_H
 N#define __USART_PRINTF_H
 N
-Nvoid PrintfLogo(char *strName, char *strDate);
-Nvoid USART_Configuration(void);
+N#include "stdio.h"	
+N#include "sys.h" 
+L 1 "..\..\Source\inc\sys.h" 1
+N#ifndef __SYS_H
+N#define __SYS_H	
+N#include "stm32f10x.h"
+N//////////////////////////////////////////////////////////////////////////////////	 
+N//本程序只供学习使用，未经作者许可，不得用于其它任何用途
+N//ALIENTEK STM32开发板		   
+N//正点原子@ALIENTEK
+N//技术论坛:www.openedv.com
+N//修改日期:2012/8/18
+N//版本：V1.7
+N//版权所有，盗版必究。
+N//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
+N//All rights reserved
+N////////////////////////////////////////////////////////////////////////////////// 	 
 N
+N//0,不支持ucos
+N//1,支持ucos
+N#define SYSTEM_SUPPORT_UCOS		0		//定义系统文件夹是否支持UCOS
+N																	    
+N	 
+N//位带操作,实现51类似的GPIO控制功能
+N//具体实现思想,参考<<CM3权威指南>>第五章(87页~92页).
+N//IO口操作宏定义
+N#define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
+N#define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
+N#define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
+N//IO口地址映射
+N#define GPIOA_ODR_Addr    (GPIOA_BASE+12) //0x4001080C 
+N#define GPIOB_ODR_Addr    (GPIOB_BASE+12) //0x40010C0C 
+N#define GPIOC_ODR_Addr    (GPIOC_BASE+12) //0x4001100C 
+N#define GPIOD_ODR_Addr    (GPIOD_BASE+12) //0x4001140C 
+N#define GPIOE_ODR_Addr    (GPIOE_BASE+12) //0x4001180C 
+N#define GPIOF_ODR_Addr    (GPIOF_BASE+12) //0x40011A0C    
+N#define GPIOG_ODR_Addr    (GPIOG_BASE+12) //0x40011E0C    
+N
+N#define GPIOA_IDR_Addr    (GPIOA_BASE+8) //0x40010808 
+N#define GPIOB_IDR_Addr    (GPIOB_BASE+8) //0x40010C08 
+N#define GPIOC_IDR_Addr    (GPIOC_BASE+8) //0x40011008 
+N#define GPIOD_IDR_Addr    (GPIOD_BASE+8) //0x40011408 
+N#define GPIOE_IDR_Addr    (GPIOE_BASE+8) //0x40011808 
+N#define GPIOF_IDR_Addr    (GPIOF_BASE+8) //0x40011A08 
+N#define GPIOG_IDR_Addr    (GPIOG_BASE+8) //0x40011E08 
+N 
+N//IO口操作,只对单一的IO口!
+N//确保n的值小于16!
+N#define PAout(n)   BIT_ADDR(GPIOA_ODR_Addr,n)  //输出 
+N#define PAin(n)    BIT_ADDR(GPIOA_IDR_Addr,n)  //输入 
+N
+N#define PBout(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  //输出 
+N#define PBin(n)    BIT_ADDR(GPIOB_IDR_Addr,n)  //输入 
+N
+N#define PCout(n)   BIT_ADDR(GPIOC_ODR_Addr,n)  //输出 
+N#define PCin(n)    BIT_ADDR(GPIOC_IDR_Addr,n)  //输入 
+N
+N#define PDout(n)   BIT_ADDR(GPIOD_ODR_Addr,n)  //输出 
+N#define PDin(n)    BIT_ADDR(GPIOD_IDR_Addr,n)  //输入 
+N
+N#define PEout(n)   BIT_ADDR(GPIOE_ODR_Addr,n)  //输出 
+N#define PEin(n)    BIT_ADDR(GPIOE_IDR_Addr,n)  //输入
+N
+N#define PFout(n)   BIT_ADDR(GPIOF_ODR_Addr,n)  //输出 
+N#define PFin(n)    BIT_ADDR(GPIOF_IDR_Addr,n)  //输入
+N
+N#define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  //输出 
+N#define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  //输入
+N
+N
+N
+Nvoid NVIC_Configuration(void);
+N
+N
+N
+N#endif
+L 19 "..\..\Source\inc\usart_printf.h" 2
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART_REC_LEN  			200  	//定义最大接收字节数 200
+N#define EN_USART1_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART_RX_BUF[200]; 
+Nextern u16 USART_RX_STA;         		//接收状态标记	
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART2_REC_LEN  		200  	//定义最大接收字节数 200
+N#define EN_USART2_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART2_RX_BUF[USART2_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART2_RX_BUF[200]; 
+Nextern u16 USART2_RX_STA;         		//接收状态标记
+N
+N//驱动器参数
+N//define data address (A1)
+N#define MotorPowerAddress							0x00
+N#define	MotorPowerOn 								0x01
+N#define	MotorPowerOff								0x00
+N#define	ModeChoiceAddress							0x02
+N#define ModeChoiceVelocityPC						0xC4
+N#define ModeChoicePositionPC						0xD0
+N#define ModeChoicePositionPluse					    0xC0
+N#define ModeChoiceTorquePC							0xC1
+N
+N#define VelModSetAccAddress							0x0A
+N#define VelModSetValAddress							0x06
+N#define PosModSetHighAddress						0x50
+N#define PosModSetLowAddress							0x05
+N#define PosModChangeAbsOrRelaControlAdd	            0x51
+N#define PosModSetVelLimitAddress				    0x1D
+N#define TorModSetValAddress							0x08
+N#define FineZPointAddress							0x53
+N#define ClearErrorAddress							0x4A
+N
+N
+N#define UART1   1
+N#define UART2   2
+N#define UART1_2	3
+N
+Nvoid PrintfLogo(char *strName, char *strDate);
+Nvoid USART2_Configuration(void);
+N
+N//如果想串口中断接收，请不要注释以下宏定义
+Nvoid uart_init(u32 bound);
+Nvoid Uart2ASendStr (u8 *pucStr, u8 ulNum);
+Nvoid Uart1ASendStr (u8 *pucStr, u8 ulNum);
+N//以下为驱动器通讯协议
+N
+Nvoid COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff);
+Nvoid COM_GIIMBot_DRV_Mode_Choice(unsigned char UARTx, unsigned char ModeChoice);
+N//void COM_GIIMBot_DRV_Vel_Mode_Set Acc(unsigned char USRTx, );
+Nvoid COM_GIIMBot_DRV_Position_Mode(unsigned char UARTx, short Temp_PWM, int Temp_Position);
 N#endif
 N
 N
@@ -27553,7 +27683,20 @@ Nint32_t GetRunTime(void);
 N
 N#endif
 L 58 "..\..\Source\src\main.c" 2
+N#include "SPI-fd.h"
+L 1 "..\..\Source\inc\SPI-fd.h" 1
+N//#include "includes.h"
+N#include <STM32F10X_SPI.h>
+N#include <STM32F10X_GPIO.h>
+N#include <STM32F10X_RCC.h>
+N#ifndef __SPI_FD_H
+N#define __SPI_FD_H
+N//SPI1???
+Nvoid SPI2_Init(void);
 N
+N#endif /* IP_ARP_UDP_TCP_H */
+N
+L 59 "..\..\Source\src\main.c" 2
 N
 N/* 实现uip需要包含的h文件 */
 N#include "uip.h"
@@ -32455,7 +32598,6 @@ Nint main(void)
 N{
 N	Init_fd();	//板子资源的初始化
 N	DispLogo();		/* 显示例程Logo */
-W "..\..\Source\src\main.c" 89 2 function "SPI2_Init" declared implicitly
 N	SPI2_Init();
 N    
 N	InitNet();		/* 初始化网络设备以及UIP协议栈，配置IP地址 */
@@ -32683,8 +32825,8 @@ N	/* 配置按键GPIO和LED GPIO */
 N	GPIO_Configuration();
 N
 N	/* 配置串口 */
-N	USART_Configuration();
-N
+N	USART2_Configuration();
+N    uart_init(57600);
 N
 N
 N	/* 配置systic作为1ms中断,这个函数在

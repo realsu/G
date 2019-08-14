@@ -361,7 +361,7 @@
               <MiscControls></MiscControls>
               <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Core\CM3;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\Source\inc;..\..\Libraries\uIP-1.0\apps\webserver;..\..\Libraries\uIP-1.0\uip;..\..\Source\src\uIP_enc28j60</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Core\CM3;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\Source\inc;..\..\Libraries\uIP-1.0\apps\webserver;..\..\Libraries\uIP-1.0\uip;..\..\Source\src\uIP_enc28j60;..\..\Source\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -428,6 +428,16 @@
               <FileName>SPI.C</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Source\src\uIP_enc28j60\SPI.C</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>web_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\web_server.c</FilePath>
             </File>
           </Files>
         </Group>

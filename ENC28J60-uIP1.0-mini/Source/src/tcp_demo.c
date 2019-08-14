@@ -5,7 +5,7 @@
 #include <string.h>
 #include <stdio.h>
 #include "stm32f10x.h"
-
+#include "usart_printf.h"
 static void aborted(void);
 static void timedout(void);
 static void closed(void);
@@ -15,7 +15,7 @@ static void acked(void);
 static void senddata(void);
 
 static uint8_t test_data[2048];   /* 1K测试数据 */
-
+u8 data[4];
 //#define LED1_ON()	GPIO_SetBits(GPIOB,  GPIO_Pin_5);
 #define LED1_ON()	GPIO_ResetBits(GPIOA,  GPIO_Pin_9);
 #define LED2_ON()	GPIO_ResetBits(GPIOA,  GPIO_Pin_10);
@@ -40,25 +40,25 @@ void tcp_demo_appcall(void)
 {
 	if (uip_aborted())
 	{
-		printf("uip_aborted!\r\n");
+		//printf("uip_aborted!\r\n");
 		aborted();
 	}
 
 	if (uip_timedout())
 	{
-		printf("uip_timedout!\r\n");
+		//printf("uip_timedout!\r\n");
 		timedout();
 	}
 
 	if (uip_closed())
 	{
-		printf("uip_closed!\r\n");
+		//printf("uip_closed!\r\n");
 		closed();
 	}
 
 	if (uip_connected())
 	{
-		printf("uip_connected!\r\n");
+		//printf("uip_connected!\r\n");
 		connected();
 	}
 
@@ -160,13 +160,25 @@ void TCP_Cmd(struct tcp_demo_appstate *s)
 		if (led == '1')
 		{
 			LED1_ON();
-            printf("led 1 on\r\n");
-			s->textptr = "Led 1 On!";
+            //printf("on\r\n");
+            
+			s->textptr = "Motor On!";
+
+            //数据地址A1
+                data[0] = 0x80; 													
+            //数据高8位
+                data[1] = 0x00; 													
+            //数据底8位
+                data[2] = 0x80;										
+            //数据校验和(A1+A2+A3)
+                data[3] = 0x00;
+            Uart1ASendStr(data,4);
+            Uart2ASendStr(data,4);
 		}
 		else if (led == '2')
 		{
 			LED2_ON();
-            printf("led 2 on\r\n");
+            //printf("led 2 on\r\n");
 			s->textptr = "Led 2 On!";			
 		}
 		
@@ -183,13 +195,23 @@ void TCP_Cmd(struct tcp_demo_appstate *s)
 		if (led == '1')
 		{
 			LED1_OFF();
-            printf("led 1 off\r\n");
-			s->textptr = "Led 1 Off!";
+            //printf("off\r\n");
+            //数据地址A1
+            data[0] = 0x00; 													
+            //数据高8位
+            data[1] = 0x00; 													
+            //数据底8位
+            data[2] = 0x01;										
+            //数据校验和(A1+A2+A3)
+            data[3] = data[0] + data[1] + data[2];
+            Uart1ASendStr(data,4);
+            Uart2ASendStr(data,4);
+			s->textptr = "Motor Off!";
 		}
 		else if (led == '2')
 		{
 			LED2_OFF();
-            printf("led 2 off\r\n");
+            //printf("led 2 off\r\n");
 			s->textptr = "Led 2 Off!";				
 		}
 				
@@ -197,8 +219,8 @@ void TCP_Cmd(struct tcp_demo_appstate *s)
 	}
 	/* 发送数据测试 sendtest
 		语法：sendtest
-		例如 ： 
-		ledon 2 表示点亮LED2	
+		例如 ：
+		ledon 2 表示点亮LED2
 	*/
 	else if ((uip_len == 6) && (memcmp("txtest", uip_appdata, 6) == 0))
 	{
@@ -232,7 +254,7 @@ static void newdata(void)
 	
 	if (s->state == STATE_CMD)
 	{
-		printf("uip_newdata!\r\n");
+		//printf("uip_newdata!\r\n");
 		TCP_Cmd(s);
 	}
 	else if (s->state == STATE_TX_TEST)	/* 上传测试状态 */
@@ -287,7 +309,7 @@ static void acked(void)
 				只在命令状态打印调试信息 
 				避免发送测试时，影响通信速度		
 			*/
-			printf("uip_acked!\r\n");
+			//printf("uip_acked!\r\n");
 			break;
 
 		case STATE_TX_TEST:

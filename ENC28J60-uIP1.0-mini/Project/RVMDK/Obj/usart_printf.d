@@ -28,3 +28,6 @@
 .\obj\usart_printf.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h
 .\obj\usart_printf.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\obj\usart_printf.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
+.\obj\usart_printf.o: ..\..\Source\inc\usart_printf.h
+.\obj\usart_printf.o: ..\..\Source\inc\sys.h
+.\obj\usart_printf.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdarg.h

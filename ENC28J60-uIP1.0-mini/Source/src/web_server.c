@@ -40,7 +40,7 @@
 #include "uip.h"
 #include "uip_arp.h"
 #include "tapdev.h"
-
+#include "httpd.h"
 #include "timer.h"
 
 

@@ -29,7 +29,9 @@
 .\obj\main.o: ..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h
 .\obj\main.o: D:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\obj\main.o: ..\..\Source\inc\usart_printf.h
+.\obj\main.o: ..\..\Source\inc\sys.h
 .\obj\main.o: ..\..\Source\inc\systick.h
+.\obj\main.o: ..\..\Source\inc\SPI-fd.h
 .\obj\main.o: ..\..\Libraries\uIP-1.0\uip\uip.h
 .\obj\main.o: ..\..\Libraries\uIP-1.0\uip\uipopt.h
 .\obj\main.o: ..\..\Source\src\uIP_enc28j60\uip-conf.h

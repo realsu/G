@@ -3,109 +3,22 @@
 <pre>
 <h1>礦ision Build Log</h1>
 <h2>Project:</h2>
-E:\0亿方云备份\STM32\STM32F103C8T6+ENC28J60\STM32F103C8T6+ENC28J60\STM32F103C8T6+ENC28J60网络板-v1.02\ENC28J60-uIP1.0-mini\Project\RVMDK\STM32-FD-uIP.uvproj
+E:\Github_sync\G\ENC28J60-uIP1.0-mini\Project\RVMDK\STM32-FD-uIP.uvproj
 Project File Date:  08/14/2019
 
 <h2>Output:</h2>
 Build target 'STM32-FD-uIP'
-compiling SPI.C...
 linking...
-Program Size: Code=16556 RO-data=7308 RW-data=244 ZI-data=9044  
+Program Size: Code=17352 RO-data=7308 RW-data=252 ZI-data=9444  
 FromELF: creating hex file...
 ".\Obj\STM32-FD-uIP.axf" - 0 Error(s), 0 Warning(s).
-</pre>
-</body>
-</html>
-raries\uIP-1.0\uip\psock.c(188): warning:  #513-D: a value of type "const char *" cannot be assigned to an entity of type "const u8_t *"
-    s->sendptr = buf;
-..\..\Libraries\uIP-1.0\uip\psock.c(179): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&s->psockpt);
-..\..\Libraries\uIP-1.0\uip\psock.c(218): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&s->psockpt);
-..\..\Libraries\uIP-1.0\uip\psock.c(276): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8_t *"
-    buf_setup(&psock->buf, psock->bufptr, psock->bufsize);
-..\..\Libraries\uIP-1.0\uip\psock.c(274): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&psock->psockpt);
-..\..\Libraries\uIP-1.0\uip\psock.c(303): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8_t *"
-    buf_setup(&psock->buf, psock->bufptr, psock->bufsize);
-..\..\Libraries\uIP-1.0\uip\psock.c(301): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&psock->psockpt);
-..\..\Libraries\uIP-1.0\uip\psock.c(334): warning:  #167-D: argument of type "char *" is incompatible with parameter of type "u8_t *"
-    buf_setup(&psock->buf, buffer, buffersize);
-..\..\Libraries\uIP-1.0\uip\psock.c: 8 warnings, 0 errors
-compiling uip.c...
-..\..\Libraries\uIP-1.0\uip\uip.c(700): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-        UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(751): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-            UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(790): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-            UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(805): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-        UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(1394): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-      UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(1483): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-        UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(1538): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-        UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(1543): warning:  #223-D: function "tcp_server_appcall" declared implicitly
-      UIP_APPCALL();
-..\..\Libraries\uIP-1.0\uip\uip.c(1848): warning:  #177-D: label "ip_send_nolen" was declared but never referenced
-   ip_send_nolen:
-..\..\Libraries\uIP-1.0\uip\uip.c(113): warning:  #177-D: variable "all_ones_addr" was declared but never referenced
-  static const uip_ipaddr_t all_ones_addr =
-..\..\Libraries\uIP-1.0\uip\uip.c: 10 warnings, 0 errors
-compiling uip_arp.c...
-compiling uip-fw.c...
-compiling uiplib.c...
-compiling uip-neighbor.c...
-..\..\Libraries\uIP-1.0\uip\uip-neighbor.c(90): warning:  #223-D: function "printf" declared implicitly
-    printf("Adding neighbor with link address %02x:%02x:%02x:%02x:%02x:%02x\n",
-..\..\Libraries\uIP-1.0\uip\uip-neighbor.c: 1 warning, 0 errors
-compiling uip-split.c...
-compiling httpd.c...
-..\..\Source\inc\fd_eth.h(8): warning:  #1-D: last line of file ends without a newline
-  #define LED3_OFF  GPIO_ResetBits(GPIOD, GPIO_Pin_3);  
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(98): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(112): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(133): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&s->scriptpt);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(193): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(222): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PT_BEGIN(&s->outputpt);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c(252): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sin);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd.c: 7 warnings, 0 errors
-compiling httpd-cgi.c...
-..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c(67): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c(95): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c(167): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c(189): warning:  #550-D: variable "PT_YIELD_FLAG" was set but never used
-    PSOCK_BEGIN(&s->sout);
-..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c: 4 warnings, 0 errors
-compiling httpd-fs.c...
-compiling tcp_demo.c...
-compiling emc28j60_uip.c...
-..\..\Source\src\uIP_enc28j60\emc28j60_uip.c(26): warning:  #177-D: variable "baseurl" was declared but never referenced
-  static char baseurl[]="http://192.168.0.15/";
-..\..\Source\src\uIP_enc28j60\emc28j60_uip.c(32): warning:  #177-D: variable "myudpport" was declared but never referenced
-  static unsigned int myudpport =1200; // listen port for udp
-..\..\Source\src\uIP_enc28j60\emc28j60_uip.c: 2 warnings, 0 errors
-compiling tapdev.c...
-..\..\Source\src\uIP_enc28j60\tapdev.c(50): warning:  #223-D: function "etherdev_init" declared implicitly
-    etherdev_init();
-..\..\Source\src\uIP_enc28j60\tapdev.c(57): warning:  #223-D: function "enc28j60PacketReceive" declared implicitly
-    return  enc28j60PacketReceive(1500,uip_buf);
-..\..\Source\src\uIP_enc28j60\tapdev.c(64): warning:  #223-D: function "enc28j60PacketSend" declared implicitly
-    enc28j60PacketSend(uip_len,uip_buf);
-..\..\Source\src\uIP_enc28j60\tapdev.c: 3 warnings, 0 errors
+e\src\usart_printf.c: 1 warning, 0 errors
 linking...
-Program Size: Code=16556 RO-data=7308 RW-data=244 ZI-data=9044  
+Program Size: Code=17352 RO-data=7308 RW-data=252 ZI-data=9444  
 FromELF: creating hex file...
-".\Obj\STM32-FD-uIP.axf" - 0 Error(s), 36 Warning(s).
+".\Obj\STM32-FD-uIP.axf" - 0 Error(s), 1 Warning(s).
+Load "E:\\Github_sync\\G\\ENC28J60-uIP1.0-mini\\Project\\RVMDK\\Obj\\STM32-FD-uIP.axf" 
+Erase Done.
+Programming Done.
+Verify OK.
+Application running ...

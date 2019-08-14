@@ -1,5 +1,5 @@
 Dependencies for Project 'STM32-FD-uIP', Target 'STM32-FD-uIP': (DO NOT MODIFY !)
-F (..\..\Source\src\main.c)(0x5D536619)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\main.o --list_dir ".\\List\\" --list --omf_browse .\obj\main.crf --depend .\obj\main.d)
+F (..\..\Source\src\main.c)(0x5D53C71F)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\main.o --list_dir ".\\List\\" --list --omf_browse .\obj\main.crf --depend .\obj\main.d)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -28,8 +28,10 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-I (..\..\Source\inc\usart_printf.h)(0x4B37267A)
+I (..\..\Source\inc\usart_printf.h)(0x5D53C609)
+I (..\..\Source\inc\sys.h)(0x5055B57C)
 I (..\..\Source\inc\systick.h)(0x4B543DD0)
+I (..\..\Source\inc\SPI-fd.h)(0x5D53C667)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -46,7 +48,7 @@ I (..\..\Libraries\uIP-1.0\uip\clock.h)(0x4ABA6980)
 I (..\..\Source\src\uIP_enc28j60\clock-arch.h)(0x4ABA3E5E)
 I (..\..\Source\src\uIP_enc28j60\enc28j60.h)(0x5D538367)
 I (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.h)(0x4B98A482)
-F (..\..\Source\src\stm32f10x_it.c)(0x4B375380)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_it.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_it.crf --depend .\obj\stm32f10x_it.d)
+F (..\..\Source\src\stm32f10x_it.c)(0x4B375380)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_it.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_it.crf --depend .\obj\stm32f10x_it.d)
 I (..\..\Source\inc\stm32f10x_it.h)(0x4A406E58)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -75,7 +77,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Source\src\usart_printf.c)(0x5D537E39)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\usart_printf.o --list_dir ".\\List\\" --list --omf_browse .\obj\usart_printf.crf --depend .\obj\usart_printf.d)
+F (..\..\Source\src\usart_printf.c)(0x5D543524)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\usart_printf.o --list_dir ".\\List\\" --list --omf_browse .\obj\usart_printf.crf --depend .\obj\usart_printf.d)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -104,7 +106,10 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-F (..\..\Source\src\systick.c)(0x4C480116)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\systick.o --list_dir ".\\List\\" --list --omf_browse .\obj\systick.crf --depend .\obj\systick.d)
+I (..\..\Source\inc\usart_printf.h)(0x5D53C609)
+I (..\..\Source\inc\sys.h)(0x5055B57C)
+I (D:\Keil_v5\ARM\ARMCC\include\stdarg.h)(0x52FDD27E)
+F (..\..\Source\src\systick.c)(0x4C480116)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\systick.o --list_dir ".\\List\\" --list --omf_browse .\obj\systick.crf --depend .\obj\systick.d)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -134,7 +139,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (..\..\Source\inc\systick.h)(0x4B543DD0)
-F (..\..\Source\src\uIP_enc28j60\SPI.C)(0x5D538505)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\spi.o --list_dir ".\\List\\" --list --omf_browse .\obj\spi.crf --depend .\obj\spi.d)
+F (..\..\Source\src\uIP_enc28j60\SPI.C)(0x5D538505)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\spi.o --list_dir ".\\List\\" --list --omf_browse .\obj\spi.crf --depend .\obj\spi.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\STM32F10X_SPI.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -162,8 +167,56 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
+F (..\..\Source\src\sys.c)(0x5055B57C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\sys.o --list_dir ".\\List\\" --list --omf_browse .\obj\sys.crf --depend .\obj\sys.d)
+I (..\..\Source\inc\sys.h)(0x5055B57C)
+I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
+I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\Libraries\CMSIS\Core\CM3\system_stm32f10x.h)(0x4AC0A34C)
+I (..\..\Source\inc\stm32f10x_conf.h)(0x4ADCB88E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h)(0x4AC0A34C)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
+I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
+F (..\..\Source\src\web_server.c)(0x5D53C142)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\web_server.o --list_dir ".\\List\\" --list --omf_browse .\obj\web_server.crf --depend .\obj\web_server.d)
+I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
+I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
+I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
+I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
+I (D:\Keil_v5\ARM\ARMCC\include\inttypes.h)(0x52FDD27E)
+I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
+I (..\..\Source\inc\tcp_demo.h)(0x5D53846B)
+I (..\..\Libraries\uIP-1.0\uip\psock.h)(0x4AB9B1C0)
+I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
+I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
+I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
+I (..\..\Libraries\uIP-1.0\uip\uip_arp.h)(0x448D2458)
+I (..\..\Source\src\uIP_enc28j60\tapdev.h)(0x4ABA2248)
+I (..\..\Libraries\uIP-1.0\apps\webserver\httpd.h)(0x448D2458)
+I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.h)(0x448D2458)
+I (..\..\Libraries\uIP-1.0\uip\timer.h)(0x4AB9B1CE)
+I (..\..\Libraries\uIP-1.0\uip\clock.h)(0x4ABA6980)
+I (..\..\Source\src\uIP_enc28j60\clock-arch.h)(0x4ABA3E5E)
 F (..\..\Libraries\CMSIS\Core\CM3\startup\arm\startup_stm32f10x_hd.s)(0x4AC0A34C)(--cpu Cortex-M3 -g --apcs=interwork --pd "__MICROLIB SETA 1"-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x--list .\list\startup_stm32f10x_hd.lst --xref -o .\obj\startup_stm32f10x_hd.o --depend .\obj\startup_stm32f10x_hd.d)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_rcc.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_rcc.crf --depend .\obj\stm32f10x_rcc.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_rcc.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_rcc.crf --depend .\obj\stm32f10x_rcc.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -191,7 +244,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\misc.o --list_dir ".\\List\\" --list --omf_browse .\obj\misc.crf --depend .\obj\misc.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\misc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\misc.o --list_dir ".\\List\\" --list --omf_browse .\obj\misc.crf --depend .\obj\misc.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -219,7 +272,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_usart.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_usart.crf --depend .\obj\stm32f10x_usart.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_usart.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_usart.crf --depend .\obj\stm32f10x_usart.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -247,7 +300,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_gpio.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_gpio.crf --depend .\obj\stm32f10x_gpio.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_gpio.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_gpio.crf --depend .\obj\stm32f10x_gpio.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -275,7 +328,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_fsmc.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_fsmc.crf --depend .\obj\stm32f10x_fsmc.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_fsmc.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_fsmc.crf --depend .\obj\stm32f10x_fsmc.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -303,7 +356,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_spi.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_spi.crf --depend .\obj\stm32f10x_spi.d)
+F (..\..\Libraries\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c)(0x4AC0A34E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\stm32f10x_spi.o --list_dir ".\\List\\" --list --omf_browse .\obj\stm32f10x_spi.crf --depend .\obj\stm32f10x_spi.d)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
@@ -331,9 +384,9 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\CMSIS\Core\CM3\core_cm3.c)(0x4AC0A34A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\core_cm3.o --list_dir ".\\List\\" --list --omf_browse .\obj\core_cm3.crf --depend .\obj\core_cm3.d)
+F (..\..\Libraries\CMSIS\Core\CM3\core_cm3.c)(0x4AC0A34A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\core_cm3.o --list_dir ".\\List\\" --list --omf_browse .\obj\core_cm3.crf --depend .\obj\core_cm3.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
-F (..\..\Libraries\CMSIS\Core\CM3\system_stm32f10x.c)(0x4AC0A34C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\system_stm32f10x.o --list_dir ".\\List\\" --list --omf_browse .\obj\system_stm32f10x.crf --depend .\obj\system_stm32f10x.d)
+F (..\..\Libraries\CMSIS\Core\CM3\system_stm32f10x.c)(0x4AC0A34C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\system_stm32f10x.o --list_dir ".\\List\\" --list --omf_browse .\obj\system_stm32f10x.crf --depend .\obj\system_stm32f10x.d)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -361,7 +414,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Libraries\uIP-1.0\uip\psock.c)(0x4AB9B1D4)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\psock.o --list_dir ".\\List\\" --list --omf_browse .\obj\psock.crf --depend .\obj\psock.d)
+F (..\..\Libraries\uIP-1.0\uip\psock.c)(0x4AB9B1D4)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\psock.o --list_dir ".\\List\\" --list --omf_browse .\obj\psock.crf --depend .\obj\psock.d)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
@@ -374,11 +427,11 @@ I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
 I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
-F (..\..\Libraries\uIP-1.0\uip\timer.c)(0x4AB9B1CA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\timer.o --list_dir ".\\List\\" --list --omf_browse .\obj\timer.crf --depend .\obj\timer.d)
+F (..\..\Libraries\uIP-1.0\uip\timer.c)(0x4AB9B1CA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\timer.o --list_dir ".\\List\\" --list --omf_browse .\obj\timer.crf --depend .\obj\timer.d)
 I (..\..\Libraries\uIP-1.0\uip\clock.h)(0x4ABA6980)
 I (..\..\Source\src\uIP_enc28j60\clock-arch.h)(0x4ABA3E5E)
 I (..\..\Libraries\uIP-1.0\uip\timer.h)(0x4AB9B1CE)
-F (..\..\Libraries\uIP-1.0\uip\uip.c)(0x4B4CA1AE)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip.crf --depend .\obj\uip.d)
+F (..\..\Libraries\uIP-1.0\uip\uip.c)(0x4B4CA1AE)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip.crf --depend .\obj\uip.d)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -392,7 +445,7 @@ I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (..\..\Libraries\uIP-1.0\uip\uip_arch.h)(0x4AB9B164)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\uip\uip_arp.c)(0x4ABCB9EA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip_arp.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip_arp.crf --depend .\obj\uip_arp.d)
+F (..\..\Libraries\uIP-1.0\uip\uip_arp.c)(0x4ABCB9EA)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip_arp.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip_arp.crf --depend .\obj\uip_arp.d)
 I (..\..\Libraries\uIP-1.0\uip\uip_arp.h)(0x448D2458)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
@@ -405,7 +458,7 @@ I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
 I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\uip\uip-fw.c)(0x4AB9B15A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-fw.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-fw.crf --depend .\obj\uip-fw.d)
+F (..\..\Libraries\uIP-1.0\uip\uip-fw.c)(0x4AB9B15A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-fw.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-fw.crf --depend .\obj\uip-fw.d)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -419,7 +472,7 @@ I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (..\..\Libraries\uIP-1.0\uip\uip_arch.h)(0x4AB9B164)
 I (..\..\Libraries\uIP-1.0\uip\uip-fw.h)(0x4AB9B156)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\uip\uiplib.c)(0x4AB9B14C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uiplib.o --list_dir ".\\List\\" --list --omf_browse .\obj\uiplib.crf --depend .\obj\uiplib.d)
+F (..\..\Libraries\uIP-1.0\uip\uiplib.c)(0x4AB9B14C)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uiplib.o --list_dir ".\\List\\" --list --omf_browse .\obj\uiplib.crf --depend .\obj\uiplib.d)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -431,7 +484,7 @@ I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
 I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (..\..\Libraries\uIP-1.0\uip\uiplib.h)(0x4AB9B148)
-F (..\..\Libraries\uIP-1.0\uip\uip-neighbor.c)(0x4AB9B13E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-neighbor.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-neighbor.crf --depend .\obj\uip-neighbor.d)
+F (..\..\Libraries\uIP-1.0\uip\uip-neighbor.c)(0x4AB9B13E)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-neighbor.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-neighbor.crf --depend .\obj\uip-neighbor.d)
 I (..\..\Libraries\uIP-1.0\uip\uip-neighbor.h)(0x4AB9B138)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
@@ -444,7 +497,7 @@ I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
 I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\uip\uip-split.c)(0x4C480364)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-split.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-split.crf --depend .\obj\uip-split.d)
+F (..\..\Libraries\uIP-1.0\uip\uip-split.c)(0x4C480364)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\uip-split.o --list_dir ".\\List\\" --list --omf_browse .\obj\uip-split.crf --depend .\obj\uip-split.d)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
 I (..\..\Libraries\uIP-1.0\uip\uip-split.h)(0x4AB9B120)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
@@ -459,7 +512,7 @@ I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
 I (..\..\Libraries\uIP-1.0\uip\uip-fw.h)(0x4AB9B156)
 I (..\..\Libraries\uIP-1.0\uip\uip_arch.h)(0x4AB9B164)
-F (..\..\Libraries\uIP-1.0\apps\webserver\httpd.c)(0x4C4D4976)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd.crf --depend .\obj\httpd.d)
+F (..\..\Libraries\uIP-1.0\apps\webserver\httpd.c)(0x4C4D4976)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd.crf --depend .\obj\httpd.d)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -502,7 +555,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c)(0x448D2458)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd-cgi.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd-cgi.crf --depend .\obj\httpd-cgi.d)
+F (..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.c)(0x448D2458)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd-cgi.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd-cgi.crf --depend .\obj\httpd-cgi.d)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -518,7 +571,7 @@ I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.h)(0x448D2458)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-cgi.h)(0x448D2458)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
 I (D:\Keil_v5\ARM\ARMCC\include\string.h)(0x52FDD27E)
-F (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.c)(0x4AB9B6D6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd-fs.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd-fs.crf --depend .\obj\httpd-fs.d)
+F (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.c)(0x4AB9B6D6)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\httpd-fs.o --list_dir ".\\List\\" --list --omf_browse .\obj\httpd-fs.crf --depend .\obj\httpd-fs.d)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd.h)(0x448D2458)
 I (..\..\Libraries\uIP-1.0\uip\psock.h)(0x4AB9B1C0)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
@@ -533,8 +586,8 @@ I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.h)(0x448D2458)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fsdata.h)(0x4AB9CD34)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fsdata.c)(0x4C4D5286)
-F (..\..\Libraries\uIP-1.0\apps\webserver\http-strings.c)(0x448D2458)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\http-strings.o --list_dir ".\\List\\" --list --omf_browse .\obj\http-strings.crf --depend .\obj\http-strings.d)
-F (..\..\Source\src\uIP_enc28j60\ENC28J60.C)(0x4C53DD0A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\enc28j60.o --list_dir ".\\List\\" --list --omf_browse .\obj\enc28j60.crf --depend .\obj\enc28j60.d)
+F (..\..\Libraries\uIP-1.0\apps\webserver\http-strings.c)(0x448D2458)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\http-strings.o --list_dir ".\\List\\" --list --omf_browse .\obj\http-strings.crf --depend .\obj\http-strings.d)
+F (..\..\Source\src\uIP_enc28j60\ENC28J60.C)(0x4C53DD0A)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\enc28j60.o --list_dir ".\\List\\" --list --omf_browse .\obj\enc28j60.crf --depend .\obj\enc28j60.d)
 I (..\..\Source\src\uIP_enc28j60\enc28j60.h)(0x5D538367)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\STM32F10X_GPIO.h)(0x4AC0A34E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
@@ -566,7 +619,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
 I (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.h)(0x4B98A482)
 I (..\..\Source\src\uIP_enc28j60\spi.h)(0x495B60F0)
 I (D:\Keil_v5\ARM\ARMCC\include\stdio.h)(0x52FDD27E)
-F (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.c)(0x4F6C8CEB)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\ip_arp_udp_tcp.o --list_dir ".\\List\\" --list --omf_browse .\obj\ip_arp_udp_tcp.crf --depend .\obj\ip_arp_udp_tcp.d)
+F (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.c)(0x4F6C8CEB)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\ip_arp_udp_tcp.o --list_dir ".\\List\\" --list --omf_browse .\obj\ip_arp_udp_tcp.crf --depend .\obj\ip_arp_udp_tcp.d)
 I (..\..\Source\src\uIP_enc28j60\net.h)(0x46B94C54)
 I (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.h)(0x4B98A482)
 I (..\..\Source\src\uIP_enc28j60\enc28j60.h)(0x5D538367)
@@ -597,7 +650,7 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Source\src\tcp_demo.c)(0x5D537EDC)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\tcp_demo.o --list_dir ".\\List\\" --list --omf_browse .\obj\tcp_demo.crf --depend .\obj\tcp_demo.d)
+F (..\..\Source\src\tcp_demo.c)(0x5D543092)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\tcp_demo.o --list_dir ".\\List\\" --list --omf_browse .\obj\tcp_demo.crf --depend .\obj\tcp_demo.d)
 I (..\..\Source\inc\tcp_demo.h)(0x5D53846B)
 I (..\..\Libraries\uIP-1.0\uip\uipopt.h)(0x4ABBAFA0)
 I (..\..\Source\src\uIP_enc28j60\uip-conf.h)(0x4B6447C4)
@@ -636,7 +689,9 @@ I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h)(0x4AC0A34E)
 I (..\..\Libraries\STM32F10x_StdPeriph_Driver\inc\misc.h)(0x4AC0A34C)
-F (..\..\Source\src\uIP_enc28j60\emc28j60_uip.c)(0x5D538434)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\emc28j60_uip.o --list_dir ".\\List\\" --list --omf_browse .\obj\emc28j60_uip.crf --depend .\obj\emc28j60_uip.d)
+I (..\..\Source\inc\usart_printf.h)(0x5D53C609)
+I (..\..\Source\inc\sys.h)(0x5055B57C)
+F (..\..\Source\src\uIP_enc28j60\emc28j60_uip.c)(0x5D538434)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\emc28j60_uip.o --list_dir ".\\List\\" --list --omf_browse .\obj\emc28j60_uip.crf --depend .\obj\emc28j60_uip.d)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
@@ -677,7 +732,7 @@ I (..\..\Source\src\uIP_enc28j60\enc28j60.h)(0x5D538367)
 I (..\..\Source\src\uIP_enc28j60\ip_arp_udp_tcp.h)(0x4B98A482)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd.h)(0x448D2458)
 I (..\..\Libraries\uIP-1.0\apps\webserver\httpd-fs.h)(0x448D2458)
-F (..\..\Source\src\uIP_enc28j60\tapdev.c)(0x4C47FFE0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\tapdev.o --list_dir ".\\List\\" --list --omf_browse .\obj\tapdev.crf --depend .\obj\tapdev.d)
+F (..\..\Source\src\uIP_enc28j60\tapdev.c)(0x4C47FFE0)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\tapdev.o --list_dir ".\\List\\" --list --omf_browse .\obj\tapdev.crf --depend .\obj\tapdev.d)
 I (..\..\Source\src\uIP_enc28j60\Tapdev.h)(0x4ABA2248)
 I (D:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x52FDD27E)
 I (..\..\Libraries\uIP-1.0\uip\uip.h)(0x4ABBB450)
@@ -689,7 +744,7 @@ I (..\..\Libraries\uIP-1.0\uip\psock.h)(0x4AB9B1C0)
 I (..\..\Libraries\uIP-1.0\uip\pt.h)(0x4AB9B1C6)
 I (..\..\Libraries\uIP-1.0\uip\lc.h)(0x4AB9B1E0)
 I (..\..\Libraries\uIP-1.0\uip\lc-switch.h)(0x4AB9B1DA)
-F (..\..\Source\src\uIP_enc28j60\clock-arch.c)(0x4B56FAE4)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\clock-arch.o --list_dir ".\\List\\" --list --omf_browse .\obj\clock-arch.crf --depend .\obj\clock-arch.d)
+F (..\..\Source\src\uIP_enc28j60\clock-arch.c)(0x4B56FAE4)(-c --cpu Cortex-M3 -D__MICROLIB -g -O0 --apcs=interwork --split_sections --asm --interleave --asm_dir ".\\List\\" -I..\..\Libraries\CMSIS\Core\CM3 -I..\..\Libraries\STM32F10x_StdPeriph_Driver\inc -I..\..\Source\inc -I..\..\Libraries\uIP-1.0\apps\webserver -I..\..\Libraries\uIP-1.0\uip -I..\..\Source\src\uIP_enc28j60 -I..\..\Source\inc-I D:\Keil_v5\ARM\RV31\INC-I D:\Keil_v5\ARM\PACK\ARM\CMSIS\3.20.4\CMSIS\Include-I D:\Keil_v5\ARM\Inc\ST\STM32F10x-DSTM32F10X_MD -DSTM32F10X_MD -DUSE_STDPERIPH_DRIVER -o .\obj\clock-arch.o --list_dir ".\\List\\" --list --omf_browse .\obj\clock-arch.crf --depend .\obj\clock-arch.d)
 I (..\..\Source\src\uIP_enc28j60\clock-arch.h)(0x4ABA3E5E)
 I (..\..\Libraries\CMSIS\Core\CM3\stm32f10x.h)(0x4D3F7906)
 I (..\..\Libraries\CMSIS\Core\CM3\core_cm3.h)(0x4AC0A34A)

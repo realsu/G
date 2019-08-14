@@ -139,9 +139,11 @@
             <RestoreFunctions>0</RestoreFunctions>
             <RestoreToolbox>1</RestoreToolbox>
             <RestoreTracepoints>0</RestoreTracepoints>
+            <RestoreTracepoints>1</RestoreTracepoints>
+            <RestoreTracepoints>1</RestoreTracepoints>
           </Target>
           <RunDebugAfterBuild>0</RunDebugAfterBuild>
-          <TargetSelection>7</TargetSelection>
+          <TargetSelection>11</TargetSelection>
           <SimDlls>
             <CpuDll></CpuDll>
             <CpuDllArguments></CpuDllArguments>
@@ -155,7 +157,7 @@
             <PeripheralDll></PeripheralDll>
             <PeripheralDllArguments></PeripheralDllArguments>
             <InitializationFile></InitializationFile>
-            <Driver>Segger\JL2CM3.dll</Driver>
+            <Driver>STLink\ST-LINKIII-KEIL_SWO.dll</Driver>
           </TargetDlls>
         </DebugOption>
         <Utilities>
@@ -167,7 +169,7 @@
             <Capability>1</Capability>
             <DriverSelection>4099</DriverSelection>
           </Flash1>
-          <bUseTDR>0</bUseTDR>
+          <bUseTDR>1</bUseTDR>
           <Flash2>Segger\JL2CM3.dll</Flash2>
           <Flash3>"" ()</Flash3>
           <Flash4></Flash4>
@@ -353,11 +355,13 @@
             <wLevel>2</wLevel>
             <uThumb>0</uThumb>
             <uSurpInc>0</uSurpInc>
+            <uC99>0</uC99>
+            <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
-              <Define>STM32F10X_HD, USE_STDPERIPH_DRIVER</Define>
+              <Define>STM32F10X_MD,USE_STDPERIPH_DRIVER</Define>
               <Undefine></Undefine>
-              <IncludePath>..\..\Libraries\CMSIS\Core\CM3;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\Source\inc;..\..\Libraries\uIP-1.0\apps\webserver;..\..\Libraries\uIP-1.0\uip;..\..\Source\src\uIP_enc28j60</IncludePath>
+              <IncludePath>..\..\Libraries\CMSIS\Core\CM3;..\..\Libraries\STM32F10x_StdPeriph_Driver\inc;..\..\Source\inc;..\..\Libraries\uIP-1.0\apps\webserver;..\..\Libraries\uIP-1.0\uip;..\..\Source\src\uIP_enc28j60;..\..\Source\inc</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -369,6 +373,7 @@
             <SwStkChk>0</SwStkChk>
             <NoWarn>0</NoWarn>
             <uSurpInc>0</uSurpInc>
+            <useXO>0</useXO>
             <VariousControls>
               <MiscControls></MiscControls>
               <Define></Define>
@@ -385,6 +390,7 @@
             <useFile>0</useFile>
             <TextAddressRange>0x8000000</TextAddressRange>
             <DataAddressRange>0x20000000</DataAddressRange>
+            <pXoBase></pXoBase>
             <ScatterFile></ScatterFile>
             <IncludeLibs></IncludeLibs>
             <IncludeLibsPath></IncludeLibsPath>
@@ -422,6 +428,26 @@
               <FileName>SPI.C</FileName>
               <FileType>1</FileType>
               <FilePath>..\..\Source\src\uIP_enc28j60\SPI.C</FilePath>
+            </File>
+            <File>
+              <FileName>delay.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\delay.c</FilePath>
+            </File>
+            <File>
+              <FileName>sys.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\sys.c</FilePath>
+            </File>
+            <File>
+              <FileName>usart.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\usart.c</FilePath>
+            </File>
+            <File>
+              <FileName>web_server.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\..\Source\src\web_server.c</FilePath>
             </File>
           </Files>
         </Group>

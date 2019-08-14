@@ -27453,7 +27453,298 @@ N
 N/* end of stdio.h */
 N
 L 18 "..\..\Source\src\usart_printf.c" 2
+N#include "usart_printf.h"
+L 1 "..\..\Source\inc\usart_printf.h" 1
+N/****************************************************************************
+N* Copyright (C), 2009-2010, www.armfly.com
+N*
+N* 文件名: usart_printf.h
+N* 内容简述: 头文件
+N*
+N* 文件历史:
+N* 版本号  日期       作者    说明
+N* v0.1    2009-12-27 armfly  创建该文件
+N*
+N*/
 N
+N/* Define to prevent recursive inclusion -------------------------------------*/
+N#ifndef __USART_PRINTF_H
+N#define __USART_PRINTF_H
+N
+N#include "stdio.h"	
+N#include "sys.h" 
+L 1 "..\..\Source\inc\sys.h" 1
+N#ifndef __SYS_H
+N#define __SYS_H	
+N#include "stm32f10x.h"
+N//////////////////////////////////////////////////////////////////////////////////	 
+N//本程序只供学习使用，未经作者许可，不得用于其它任何用途
+N//ALIENTEK STM32开发板		   
+N//正点原子@ALIENTEK
+N//技术论坛:www.openedv.com
+N//修改日期:2012/8/18
+N//版本：V1.7
+N//版权所有，盗版必究。
+N//Copyright(C) 广州市星翼电子科技有限公司 2009-2019
+N//All rights reserved
+N////////////////////////////////////////////////////////////////////////////////// 	 
+N
+N//0,不支持ucos
+N//1,支持ucos
+N#define SYSTEM_SUPPORT_UCOS		0		//定义系统文件夹是否支持UCOS
+N																	    
+N	 
+N//位带操作,实现51类似的GPIO控制功能
+N//具体实现思想,参考<<CM3权威指南>>第五章(87页~92页).
+N//IO口操作宏定义
+N#define BITBAND(addr, bitnum) ((addr & 0xF0000000)+0x2000000+((addr &0xFFFFF)<<5)+(bitnum<<2)) 
+N#define MEM_ADDR(addr)  *((volatile unsigned long  *)(addr)) 
+N#define BIT_ADDR(addr, bitnum)   MEM_ADDR(BITBAND(addr, bitnum)) 
+N//IO口地址映射
+N#define GPIOA_ODR_Addr    (GPIOA_BASE+12) //0x4001080C 
+N#define GPIOB_ODR_Addr    (GPIOB_BASE+12) //0x40010C0C 
+N#define GPIOC_ODR_Addr    (GPIOC_BASE+12) //0x4001100C 
+N#define GPIOD_ODR_Addr    (GPIOD_BASE+12) //0x4001140C 
+N#define GPIOE_ODR_Addr    (GPIOE_BASE+12) //0x4001180C 
+N#define GPIOF_ODR_Addr    (GPIOF_BASE+12) //0x40011A0C    
+N#define GPIOG_ODR_Addr    (GPIOG_BASE+12) //0x40011E0C    
+N
+N#define GPIOA_IDR_Addr    (GPIOA_BASE+8) //0x40010808 
+N#define GPIOB_IDR_Addr    (GPIOB_BASE+8) //0x40010C08 
+N#define GPIOC_IDR_Addr    (GPIOC_BASE+8) //0x40011008 
+N#define GPIOD_IDR_Addr    (GPIOD_BASE+8) //0x40011408 
+N#define GPIOE_IDR_Addr    (GPIOE_BASE+8) //0x40011808 
+N#define GPIOF_IDR_Addr    (GPIOF_BASE+8) //0x40011A08 
+N#define GPIOG_IDR_Addr    (GPIOG_BASE+8) //0x40011E08 
+N 
+N//IO口操作,只对单一的IO口!
+N//确保n的值小于16!
+N#define PAout(n)   BIT_ADDR(GPIOA_ODR_Addr,n)  //输出 
+N#define PAin(n)    BIT_ADDR(GPIOA_IDR_Addr,n)  //输入 
+N
+N#define PBout(n)   BIT_ADDR(GPIOB_ODR_Addr,n)  //输出 
+N#define PBin(n)    BIT_ADDR(GPIOB_IDR_Addr,n)  //输入 
+N
+N#define PCout(n)   BIT_ADDR(GPIOC_ODR_Addr,n)  //输出 
+N#define PCin(n)    BIT_ADDR(GPIOC_IDR_Addr,n)  //输入 
+N
+N#define PDout(n)   BIT_ADDR(GPIOD_ODR_Addr,n)  //输出 
+N#define PDin(n)    BIT_ADDR(GPIOD_IDR_Addr,n)  //输入 
+N
+N#define PEout(n)   BIT_ADDR(GPIOE_ODR_Addr,n)  //输出 
+N#define PEin(n)    BIT_ADDR(GPIOE_IDR_Addr,n)  //输入
+N
+N#define PFout(n)   BIT_ADDR(GPIOF_ODR_Addr,n)  //输出 
+N#define PFin(n)    BIT_ADDR(GPIOF_IDR_Addr,n)  //输入
+N
+N#define PGout(n)   BIT_ADDR(GPIOG_ODR_Addr,n)  //输出 
+N#define PGin(n)    BIT_ADDR(GPIOG_IDR_Addr,n)  //输入
+N
+N
+N
+Nvoid NVIC_Configuration(void);
+N
+N
+N
+N#endif
+L 19 "..\..\Source\inc\usart_printf.h" 2
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART_REC_LEN  			200  	//定义最大接收字节数 200
+N#define EN_USART1_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART_RX_BUF[USART_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART_RX_BUF[200]; 
+Nextern u16 USART_RX_STA;         		//接收状态标记	
+N
+N////////////////////////////////////////////////////////////////////////////////// 	
+N#define USART2_REC_LEN  		200  	//定义最大接收字节数 200
+N#define EN_USART2_RX 			1		//使能（1）/禁止（0）串口1接收
+N	  	
+Nextern u8  USART2_RX_BUF[USART2_REC_LEN]; //接收缓冲,最大USART_REC_LEN个字节.末字节为换行符 
+Xextern u8  USART2_RX_BUF[200]; 
+Nextern u16 USART2_RX_STA;         		//接收状态标记
+N
+N//驱动器参数
+N//define data address (A1)
+N#define MotorPowerAddress							0x00
+N#define	MotorPowerOn 								0x01
+N#define	MotorPowerOff								0x00
+N#define	ModeChoiceAddress							0x02
+N#define ModeChoiceVelocityPC						0xC4
+N#define ModeChoicePositionPC						0xD0
+N#define ModeChoicePositionPluse					    0xC0
+N#define ModeChoiceTorquePC							0xC1
+N
+N#define VelModSetAccAddress							0x0A
+N#define VelModSetValAddress							0x06
+N#define PosModSetHighAddress						0x50
+N#define PosModSetLowAddress							0x05
+N#define PosModChangeAbsOrRelaControlAdd	            0x51
+N#define PosModSetVelLimitAddress				    0x1D
+N#define TorModSetValAddress							0x08
+N#define FineZPointAddress							0x53
+N#define ClearErrorAddress							0x4A
+N
+N
+N#define UART1   1
+N#define UART2   2
+N#define UART1_2	3
+N
+Nvoid PrintfLogo(char *strName, char *strDate);
+Nvoid USART2_Configuration(void);
+N
+N//如果想串口中断接收，请不要注释以下宏定义
+Nvoid uart_init(u32 bound);
+Nvoid Uart2ASendStr (u8 *pucStr, u8 ulNum);
+Nvoid Uart1ASendStr (u8 *pucStr, u8 ulNum);
+N//以下为驱动器通讯协议
+N
+Nvoid COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff);
+Nvoid COM_GIIMBot_DRV_Mode_Choice(unsigned char UARTx, unsigned char ModeChoice);
+N//void COM_GIIMBot_DRV_Vel_Mode_Set Acc(unsigned char USRTx, );
+Nvoid COM_GIIMBot_DRV_Position_Mode(unsigned char UARTx, short Temp_PWM, int Temp_Position);
+N#endif
+N
+N
+L 19 "..\..\Source\src\usart_printf.c" 2
+N#include "sys.h"
+N//#include "usart.h"
+N#include <stdarg.h>
+L 1 "D:\Keil_v5\ARM\ARMCC\bin\..\include\stdarg.h" 1
+N/* stdarg.h: ANSI 'C' (X3J11 Oct 88) library header, section 4.8 */
+N/* Copyright (C) Codemist Ltd., 1988                            */
+N/* Copyright (C) ARM Ltd., 1991-1999. All rights reserved */
+N
+N/*
+N * RCS $Revision: 177844 $
+N * Checkin $Date: 2012-11-21 11:51:12 +0000 (Wed, 21 Nov 2012) $
+N * Revising $Author: agrant $
+N */
+N
+N#ifndef __stdarg_h
+N#define __stdarg_h
+N#define __ARMCLIB_VERSION 5040049
+N
+N  #ifndef __STDARG_DECLS
+N  #define __STDARG_DECLS
+N
+N    #undef __CLIBNS
+N
+N    #ifdef __cplusplus
+S      namespace std {
+S          #define __CLIBNS ::std::
+S          extern "C" {
+N    #else
+N      #define __CLIBNS
+N    #endif  /* __cplusplus */
+N
+N/*
+N * stdarg.h declares a type and defines macros for advancing through a
+N * list of arguments whose number and types are not known to the called
+N * function when it is translated. A function may be called with a variable
+N * number of arguments of differing types. Its parameter list contains one or
+N * more parameters. The rightmost parameter plays a special role in the access
+N * mechanism, and will be called parmN in this description.
+N */
+N
+N/* N.B. <stdio.h> is required to declare vfprintf() without defining      */
+N/* va_list.  Clearly the type __va_list there must keep in step.          */
+N  typedef struct __va_list { void *__ap; } va_list;
+N
+N   /*
+N    * an array type suitable for holding information needed by the macro va_arg
+N    * and the function va_end. The called function shall declare a variable
+N    * (referred to as ap) having type va_list. The variable ap may be passed as
+N    * an argument to another function.
+N    * Note: va_list is an array type so that when an object of that type
+N    * is passed as an argument it gets passed by reference.
+N    */
+N  #define va_start(ap, parmN) __va_start(ap, parmN)
+N
+N   /*
+N    * The va_start macro shall be executed before any access to the unnamed
+N    * arguments. The parameter ap points to an object that has type va_list.
+N    * The va_start macro initialises ap for subsequent use by va_arg and
+N    * va_end. The parameter parmN is the identifier of the rightmost parameter
+N    * in the variable parameter list in the function definition (the one just
+N    * before the '...'). If the parameter parmN is declared with the register
+N    * storage class an error is given.
+N    * If parmN is a narrow type (char, short, float) an error is given in
+N    * strict ANSI mode, or a warning otherwise.
+N    * Returns: no value.
+N    */
+N  #define va_arg(ap, type) __va_arg(ap, type)
+N
+N   /*
+N    * The va_arg macro expands to an expression that has the type and value of
+N    * the next argument in the call. The parameter ap shall be the same as the
+N    * va_list ap initialised by va_start. Each invocation of va_arg modifies
+N    * ap so that successive arguments are returned in turn. The parameter
+N    * 'type' is a type name such that the type of a pointer to an object that
+N    * has the specified type can be obtained simply by postfixing a * to
+N    * 'type'. If type is a narrow type, an error is given in strict ANSI
+N    * mode, or a warning otherwise. If the type is an array or function type,
+N    * an error is given.
+N    * In non-strict ANSI mode, 'type' is allowed to be any expression.
+N    * Returns: The first invocation of the va_arg macro after that of the
+N    *          va_start macro returns the value of the argument after that
+N    *          specified by parmN. Successive invocations return the values of
+N    *          the remaining arguments in succession.
+N    *          The result is cast to 'type', even if 'type' is narrow.
+N    */
+N
+N#define __va_copy(dest, src) ((void)((dest) = (src)))
+N
+N#if !defined(__STRICT_ANSI__) || (defined(__STDC_VERSION__) && 199901L <= __STDC_VERSION__)
+X#if !0L || (1L && 199901L <= 199409L)
+N   /* va_copy is in C99 and non-strict C90 and non-strict C++
+N    * __va_copy is always present.
+N    */
+N  #define va_copy(dest, src) ((void)((dest) = (src)))
+N
+N   /* The va_copy macro makes the va_list dest be a copy of
+N    * the va_list src, as if the va_start macro had been applied
+N    * to it followed by the same sequence of uses of the va_arg
+N    * macro as had previously been used to reach the present state
+N    * of src.
+N    */
+N#endif
+N
+N#define va_end(ap) __va_end(ap)
+N   /*
+N    * The va_end macro facilitates a normal return from the function whose
+N    * variable argument list was referenced by the expansion of va_start that
+N    * initialised the va_list ap. If the va_end macro is not invoked before
+N    * the return, the behaviour is undefined.
+N    * Returns: no value.
+N    */
+N
+N    #ifdef __cplusplus
+S         }  /* extern "C" */
+S      }  /* namespace std */
+N    #endif /* __cplusplus */
+N
+N    #ifdef __GNUC__
+S     /* be cooperative with glibc */
+S     typedef __CLIBNS va_list __gnuc_va_list;
+S     #define __GNUC_VA_LIST
+S     #undef __need___va_list
+N    #endif
+N
+N  #endif /* __STDARG_DECLS */
+N
+N  #ifdef __cplusplus
+S    #ifndef __STDARG_NO_EXPORTS
+S      using ::std::va_list;
+S    #endif
+N  #endif /* __cplusplus */
+N
+N#endif
+N
+N/* end of stdarg.h */
+N
+L 22 "..\..\Source\src\usart_printf.c" 2
 N/*******************************************************************************
 N	函数名：PrintfLogo
 N	输  入: 例程名称和例程最后更新日期
@@ -27485,7 +27776,7 @@ N	(2)设置USART两个管脚GPIO模式
 N	(3)配置USART数据格式、波特率等参数
 N	(4)最后使能USART功能
 N*/
-Nvoid USART_Configuration(void)
+Nvoid USART2_Configuration(void)
 N{
 N	GPIO_InitTypeDef GPIO_InitStructure;
 N	USART_InitTypeDef USART_InitStructure;
@@ -27529,7 +27820,7 @@ N	    - No parity
 N	    - Hardware flow control disabled (RTS and CTS signals)
 N	    - Receive and transmit enabled
 N	*/
-N	USART_InitStructure.USART_BaudRate = 115200;
+N	USART_InitStructure.USART_BaudRate = 57600;
 N	USART_InitStructure.USART_WordLength = USART_WordLength_8b;
 X	USART_InitStructure.USART_WordLength = ((uint16_t)0x0000);
 N	USART_InitStructure.USART_StopBits = USART_StopBits_1;
@@ -27593,3 +27884,452 @@ N	return (int)USART_ReceiveData(USART2);
 X	return (int)USART_ReceiveData(((USART_TypeDef *) (((uint32_t)0x40000000) + 0x4400)));
 N}
 N
+N
+N//串口1中断服务程序
+N//注意,读取USARTx->SR能避免莫名其妙的错误   	
+Nu8 USART_RX_BUF[USART_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+Xu8 USART_RX_BUF[200];     
+N//接收状态
+N//bit15，	接收完成标志
+N//bit14，	接收到0x0d
+N//bit13~0，	接收到的有效字节数目
+Nu16 USART_RX_STA=0;       //接收状态标记	  
+N
+N//串口2中断服务程序
+N//注意,读取USARTx->SR能避免莫名其妙的错误   	
+Nu8 USART2_RX_BUF[USART2_REC_LEN];     //接收缓冲,最大USART_REC_LEN个字节.
+Xu8 USART2_RX_BUF[200];     
+N//接收状态
+N//bit15，	接收完成标志
+N//bit14，	接收到0x0d
+N//bit13~0，	接收到的有效字节数目
+Nu16 USART2_RX_STA=0;       //接收状态标记	
+N
+N
+N
+N//初始化IO 串口1 
+N//bound:波特率
+Nvoid uart_init(u32 bound){
+N    //GPIO端口设置
+N    GPIO_InitTypeDef GPIO_InitStructure;
+N	USART_InitTypeDef USART_InitStructure;
+N	NVIC_InitTypeDef NVIC_InitStructure;
+N	 
+N	RCC_APB2PeriphClockCmd(RCC_APB2Periph_USART1|RCC_APB2Periph_GPIOA, ENABLE);	//使能USART1，GPIOA时钟
+X	RCC_APB2PeriphClockCmd(((uint32_t)0x00004000)|((uint32_t)0x00000004), ENABLE);	
+N 	USART_DeInit(USART1);  //复位串口1
+X 	USART_DeInit(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)));  
+N	 //USART1_TX   PA.9
+N    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_9; //PA.9
+X    GPIO_InitStructure.GPIO_Pin = ((uint16_t)0x0200); 
+N    GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+N    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP;	//复用推挽输出
+N    GPIO_Init(GPIOA, &GPIO_InitStructure); //初始化PA9
+X    GPIO_Init(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), &GPIO_InitStructure); 
+N   
+N    //USART1_RX	  PA.10
+N    GPIO_InitStructure.GPIO_Pin = GPIO_Pin_10;
+X    GPIO_InitStructure.GPIO_Pin = ((uint16_t)0x0400);
+N    GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
+N    GPIO_Init(GPIOA, &GPIO_InitStructure);  //初始化PA10
+X    GPIO_Init(((GPIO_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x0800)), &GPIO_InitStructure);  
+N
+N   //Usart1 NVIC 配置
+N
+N    NVIC_InitStructure.NVIC_IRQChannel = USART1_IRQn;
+N	NVIC_InitStructure.NVIC_IRQChannelPreemptionPriority=1 ;//抢占优先级3
+N	NVIC_InitStructure.NVIC_IRQChannelSubPriority = 0;		//子优先级3
+N	NVIC_InitStructure.NVIC_IRQChannelCmd = ENABLE;			//IRQ通道使能
+N	NVIC_Init(&NVIC_InitStructure);	//根据指定的参数初始化VIC寄存器
+N  
+N   //USART 初始化设置
+N
+N	USART_InitStructure.USART_BaudRate = bound;//一般设置为9600;
+N	USART_InitStructure.USART_WordLength = USART_WordLength_8b;//字长为8位数据格式
+X	USART_InitStructure.USART_WordLength = ((uint16_t)0x0000);
+N	USART_InitStructure.USART_StopBits = USART_StopBits_1;//一个停止位
+X	USART_InitStructure.USART_StopBits = ((uint16_t)0x0000);
+N	USART_InitStructure.USART_Parity = USART_Parity_No;//无奇偶校验位
+X	USART_InitStructure.USART_Parity = ((uint16_t)0x0000);
+N	USART_InitStructure.USART_HardwareFlowControl = USART_HardwareFlowControl_None;//无硬件数据流控制
+X	USART_InitStructure.USART_HardwareFlowControl = ((uint16_t)0x0000);
+N	USART_InitStructure.USART_Mode = USART_Mode_Rx | USART_Mode_Tx;	//收发模式
+X	USART_InitStructure.USART_Mode = ((uint16_t)0x0004) | ((uint16_t)0x0008);	
+N
+N    USART_Init(USART1, &USART_InitStructure); //初始化串口
+X    USART_Init(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)), &USART_InitStructure); 
+N    USART_ITConfig(USART1, USART_IT_RXNE, ENABLE);//开启中断
+X    USART_ITConfig(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)), ((uint16_t)0x0525), ENABLE);
+N    USART_Cmd(USART1, ENABLE);                    //使能串口 
+X    USART_Cmd(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)), ENABLE);                    
+N
+N}
+N
+N
+N/*
+N * 函数名：itoa
+N * 描述  ：将整形数据转换成字符串
+N * 输入  ：-radix =10 表示10进制，其他结果为0
+N *         -value 要转换的整形数
+N *         -buf 转换后的字符串
+N *         -radix = 10
+N * 输出  ：无
+N * 返回  ：无
+N * 调用  ：被USART1_printf()调用
+N */
+Nstatic char *itoa(int value, char *string, int radix)
+N{
+N    int     i, d;
+N    int     flag = 0;
+N    char    *ptr = string;
+N
+N    /* This implementation only works for decimal numbers. */
+N    if (radix != 10)
+N    {
+N        *ptr = 0;
+N        return string;
+N    }
+N
+N    if (!value)
+N    {
+N        *ptr++ = 0x30;
+N        *ptr = 0;
+N        return string;
+N    }
+N
+N    /* if this is a negative value insert the minus sign. */
+N    if (value < 0)
+N    {
+N        *ptr++ = '-';
+N
+N        /* Make the value positive. */
+N        value *= -1;
+N    }
+N
+N    for (i = 10000; i > 0; i /= 10)
+N    {
+N        d = value / i;
+N
+N        if (d || flag)
+N        {
+N            *ptr++ = (char)(d + 0x30);
+N            value -= (d * i);
+N            flag = 1;
+N        }
+N    }
+N
+N    /* Null terminate the string. */
+N    *ptr = 0;
+N
+N    return string;
+N
+N} /* NCL_Itoa */
+N
+N/*
+N * 函数名：USART1_printf
+N * 描述  ：格式化输出，类似于C库中的printf，但这里没有用到C库
+N * 输入  ：-USARTx 串口通道，这里只用到了串口1，即USART1
+N *		     -Data   要发送到串口的内容的指针
+N *			   -...    其他参数
+N * 输出  ：无
+N * 返回  ：无 
+N * 调用  ：外部调用
+N *         典型应用USART1_printf( USART1, "\r\n this is a demo \r\n" );
+N *            		 USART1_printf( USART1, "\r\n %d \r\n", i );
+N *            		 USART1_printf( USART1, "\r\n %s \r\n", j );
+N */
+Nvoid USART1_printf(USART_TypeDef* USARTx, uint8_t *Data,...)
+N{
+N	const char *s;
+N  int d;   
+N  char buf[16];
+N
+N  va_list ap;
+N  va_start(ap, Data);
+X  __va_start(ap, Data);
+N
+N	while ( *Data != 0)     // 判断是否到达字符串结束符
+N	{				                          
+N		if ( *Data == 0x5c )  //'\'
+N		{									  
+N			switch ( *++Data )
+N			{
+N				case 'r':							          //回车符
+N					USART_SendData(USARTx, 0x0d);
+N					Data ++;
+N					break;
+N
+N				case 'n':							          //换行符
+N					USART_SendData(USARTx, 0x0a);	
+N					Data ++;
+N					break;
+N				
+N				default:
+N					Data ++;
+N				    break;
+N			}			 
+N		}
+N		else if ( *Data == '%')
+N		{									  //
+N			switch ( *++Data )
+N			{				
+N				case 's':										  //字符串
+N					s = va_arg(ap, const char *);
+X					s = __va_arg(ap, const char *);
+N          for ( ; *s; s++) 
+N					{
+N						USART_SendData(USARTx,*s);
+N						while( USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET );
+X						while( USART_GetFlagStatus(USARTx, ((uint16_t)0x0040)) == RESET );
+N          }
+N					Data++;
+N          break;
+N
+N        case 'd':										//十进制
+N          d = va_arg(ap, int);
+X          d = __va_arg(ap, int);
+N          itoa(d, buf, 10);
+N          for (s = buf; *s; s++) 
+N					{
+N						USART_SendData(USARTx,*s);
+N						while( USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET );
+X						while( USART_GetFlagStatus(USARTx, ((uint16_t)0x0040)) == RESET );
+N          }
+N					Data++;
+N          break;
+N				 default:
+N						Data++;
+N				    break;
+N			}		 
+N		} /* end of else if */
+N		else USART_SendData(USARTx, *Data++);
+N		while( USART_GetFlagStatus(USARTx, USART_FLAG_TC) == RESET );
+X		while( USART_GetFlagStatus(USARTx, ((uint16_t)0x0040)) == RESET );
+N	}
+N}
+N
+N
+Nvoid Uart1ASendStr (u8 *pucStr, u8 ulNum) 
+N{ 
+N	u8 i; 
+Nfor(i = 0;i<ulNum;i++) 
+N{ 
+N	     USART_SendData(USART1,*pucStr++);
+X	     USART_SendData(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)),*pucStr++);
+N	while( USART_GetFlagStatus(USART1,USART_FLAG_TXE) == RESET );  
+X	while( USART_GetFlagStatus(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)),((uint16_t)0x0080)) == RESET );  
+N
+N}  
+N} 
+N
+Nvoid Uart2ASendStr (u8 *pucStr, u8 ulNum) 
+N{ 
+N	u8 i; 
+Nfor(i = 0;i<ulNum;i++) 
+N{ 
+N	USART_SendData(USART2,*pucStr++);
+X	USART_SendData(((USART_TypeDef *) (((uint32_t)0x40000000) + 0x4400)),*pucStr++);
+N	while( USART_GetFlagStatus(USART2,USART_FLAG_TXE) == RESET );
+X	while( USART_GetFlagStatus(((USART_TypeDef *) (((uint32_t)0x40000000) + 0x4400)),((uint16_t)0x0080)) == RESET );
+N     
+N}  
+N}
+N
+Nvoid COM_GIIMBot_DRV_Motor_Mode(unsigned char UARTx, unsigned char MotorOnOrOff)
+N{
+N		u8 data[4];
+N	//数据地址A1
+N		data[0] = 0x00; 													
+N	//数据高8位
+N		data[1] = 0x00; 													
+N	//数据底8位
+N		data[2] = MotorOnOrOff;										
+N	//数据校验和(A1+A2+A3)
+N		data[3] = data[0] + data[1] + data[2];
+N	
+N		if(UARTx == 1)
+N		{
+N			Uart1ASendStr(data,4);
+N		}
+N		else if (UARTx == 2)
+N		{	
+N			Uart2ASendStr(data,4);
+N		}
+N		else
+N		{
+N			Uart1ASendStr(data,4);
+N			Uart2ASendStr(data,4);
+N		}
+N}
+N
+Nvoid COM_GIIMBot_DRV_Mode_Choice(unsigned char UARTx, unsigned char ModeChoice)
+N{
+N	
+N		u8 data[4];
+N		//数据地址A1
+N		data[0] = ModeChoiceAddress; 													
+X		data[0] = 0x02; 													
+N		//数据高8位
+N		data[1] = 0x00; 													
+N		//数据底8位
+N		data[2] = ModeChoice;	
+N		//数据校验和(A1+A2+A3)
+N		data[3] = data[0] + data[1] + data[2];
+N		if(UARTx == 1)
+N		{
+N			Uart1ASendStr(data,4);
+N		}
+N		else if (UARTx == 2)
+N		{	
+N			Uart2ASendStr(data,4);
+N		}
+N		else
+N		{
+N			Uart1ASendStr(data,4);
+N			Uart2ASendStr(data,4);
+N		}
+N}
+N
+N
+N
+N
+N
+N
+N
+N
+Nvoid COM_GIIMBot_DRV_Position_Mode(unsigned char UARTx, short Temp_PWM, int Temp_Position)
+N{
+N		u8 data_h[4];
+N		u8 data_l[4];
+N		u8 data_vel_limit[4];
+N		short PWM;
+N		PWM = Temp_PWM*16384/6000;
+N		//数据地址A1
+N		data_h[0] = PosModSetHighAddress; 													
+X		data_h[0] = 0x50; 													
+N		//数据高1-8位(number>>8)&0XFF; 
+N		data_h[1] = (u8)(Temp_Position >> 24);													
+N		//数据高2-8位
+N		data_h[2] = (u8)(Temp_Position >> 16);	
+N		//数据校验和(A1+A2+A3)
+N		data_h[3] = data_h[0] + data_h[1] + data_h[2];
+N		//数据地址A1
+N		data_l[0] = PosModSetLowAddress; 													
+X		data_l[0] = 0x05; 													
+N		//数据高1-8位(number>>8)&0XFF; 
+N		data_l[1] = (u8)(Temp_Position >> 8);													
+N		//数据高2-8位
+N		data_l[2] = (u8)Temp_Position;
+N		//数据校验和(A1+A2+A3)
+N		data_l[3] = data_l[0] + data_l[1] + data_l[2];
+N	
+N		data_vel_limit[0] = PosModSetVelLimitAddress;
+X		data_vel_limit[0] = 0x1D;
+N		data_vel_limit[1] = (u8)(PWM >> 8);	
+N		data_vel_limit[2] = (u8)PWM;	
+N		data_vel_limit[3] = data_vel_limit[0] + data_vel_limit[1] + data_vel_limit[2];
+N	if( UARTx != 0)
+N		{
+N		switch(UARTx)
+N			{
+N				case UART1:  	
+X				case 1:  	
+N					Uart1ASendStr(data_h,4);
+N					Uart1ASendStr(data_l,4);
+N					Uart1ASendStr(data_vel_limit,4); 
+N					break;
+N				case UART2:  	
+X				case 2:  	
+N					Uart2ASendStr(data_h,4);
+N					Uart2ASendStr(data_l,4);	
+N					Uart2ASendStr(data_vel_limit,4);				
+N					break;
+N				case UART1_2:  	
+X				case 3:  	
+N					Uart1ASendStr(data_h,4);
+N					Uart2ASendStr(data_h,4);
+N					Uart1ASendStr(data_l,4);
+N					Uart2ASendStr(data_l,4); 	
+N					Uart1ASendStr(data_vel_limit,4);
+N					Uart2ASendStr(data_vel_limit,4);				
+N					break;
+N				default:  
+N					break; 	
+N			}
+N		}
+N}
+N
+N#if EN_USART1_RX   //如果使能了接收
+X#if 1   
+Nvoid USART1_IRQHandler(void)                	//串口1中断服务程序
+N	{
+N	u8 Res;
+N#ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
+S	OSIntEnter();    
+N#endif
+N    if(USART_GetITStatus(USART1,USART_IT_RXNE) != RESET) 
+X    if(USART_GetITStatus(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)),((uint16_t)0x0525)) != RESET) 
+N    {
+N		USART_ClearITPendingBit(USART1,USART_IT_RXNE); 
+X		USART_ClearITPendingBit(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)),((uint16_t)0x0525)); 
+N        USART_RX_BUF[USART_RX_STA]=USART_ReceiveData(USART1);
+X        USART_RX_BUF[USART_RX_STA]=USART_ReceiveData(((USART_TypeDef *) ((((uint32_t)0x40000000) + 0x10000) + 0x3800)));
+N		USART_RX_STA++; 
+N		if(USART_RX_BUF[0] == 0x80 || USART_RX_STA == USART_REC_LEN)    
+X		if(USART_RX_BUF[0] == 0x80 || USART_RX_STA == 200)    
+N		{
+N			if(USART_RX_BUF[1] == 0x00)                     
+N			{
+N				printf("%s\r\n",USART_RX_BUF);
+N				USART_RX_STA=0;                                   
+N			} 
+N			else
+N			{
+N				USART_RX_STA=0;  
+N			}
+N		}
+N	}
+N//	if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
+N//		{
+N//		Res =USART_ReceiveData(USART1);//(USART1->DR);	//读取接收到的数据
+N//		//printf("Res =USART_ReceiveData(USART1);\n\r");
+N//		if((USART_RX_STA&0x8000)==0)//接收未完成
+N//			{
+N//                //printf("if((USART_RX_STA&0x8000)==0)\n\r");
+N//			if(USART_RX_STA&0x4000)//接收到了0x0d
+N//				{
+N//                    //printf("if(USART_RX_STA&0x4000\n\r");
+N//				if(Res!=0x0a)
+N//                {
+N//                    USART_RX_STA=0;//接收错误,重新开始
+N//                    //printf("if(Res!=0x0a)\n\r");
+N//                }
+N//				else USART_RX_STA|=0x8000;	//接收完成了
+N//                    //printf("else USART_RX_STA|=0x8000;	\n\r");
+N//				}
+N//			else //还没收到0X0D
+N//				{	//printf("else no 0x0D\n\r");
+N//				if(Res==0x0d)
+N//                {
+N//                    USART_RX_STA|=0x4000;
+N//                    //printf("if(Res==0x0d)\n\r");
+N//                }
+N//				else
+N//					{
+N//					USART_RX_BUF[USART_RX_STA&0X3FFF]=Res ;
+N//                   // printf("USART_RX_BUF[USART_RX_STA&0X3FFF]=Res\n\r");
+N//					USART_RX_STA++;
+N//                    printf("%x",USART_RX_STA++);
+N//                    //printf("Res = %d",Res);
+N//					if(USART_RX_STA>(USART_REC_LEN-1))USART_RX_STA=0;//接收数据错误,重新开始接收	  
+N//					}		 
+N//				}
+N//			}   		 
+N//     } 
+N    
+N#ifdef OS_TICKS_PER_SEC	 	//如果时钟节拍数定义了,说明要使用ucosII了.
+S	OSIntExit();  											 
+N#endif
+W "..\..\Source\src\usart_printf.c" 487 5 variable "Res" was declared but never referenced
+N}	 
+N#endif

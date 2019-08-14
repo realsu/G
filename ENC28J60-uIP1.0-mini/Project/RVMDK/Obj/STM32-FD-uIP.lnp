@@ -4,6 +4,8 @@
 ".\obj\usart_printf.o"
 ".\obj\systick.o"
 ".\obj\spi.o"
+".\obj\sys.o"
+".\obj\web_server.o"
 ".\obj\startup_stm32f10x_hd.o"
 ".\obj\stm32f10x_rcc.o"
 ".\obj\misc.o"
